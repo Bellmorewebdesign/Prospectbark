@@ -9,6 +9,10 @@ export default defineConfig({
   base: './',
   plugins: [react()],
   build: {
+    // Output into /docs so GitHub Pages "Deploy from a branch → /docs" serves
+    // the built site directly (no Actions step required).
+    outDir: 'docs',
+    emptyOutDir: true,
     target: 'es2019',
     cssCodeSplit: false,
     assetsInlineLimit: 2048,

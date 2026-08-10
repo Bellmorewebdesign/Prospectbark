@@ -21,18 +21,23 @@ npm run build    # production build → dist/
 npm run preview  # preview the production build
 ```
 
-## Deploy to GitHub Pages
+## Deploy to GitHub Pages (deploy from a branch)
 
-Two options — both work because the app uses **relative asset paths**
-(`base: './'`) and **hash routing**, so there are no 404s on refresh and no
-sub-path configuration to worry about.
+The production build is committed to the **`docs/`** folder, so GitHub Pages can
+serve it straight from the branch — no Actions, no build server.
 
-**Automatic (recommended).** A workflow at `.github/workflows/deploy.yml` builds
-and publishes on every push to `main`. In the repo: **Settings → Pages → Build and
-deployment → Source → GitHub Actions.** Done.
+In the repo: **Settings → Pages → Build and deployment → Source → Deploy from a
+branch**, then choose your branch and set the folder to **`/docs`**. Save.
 
-**Manual.** Run `npm run build` and serve the generated `dist/` folder from any
-static host.
+It works at any repo sub-path because the app uses **relative asset paths**
+(`base: './'`) and **hash routing**, so there are no 404s on refresh.
+
+After changing any source, rebuild and commit `docs/`:
+
+```bash
+npm run build   # regenerates docs/
+git add docs && git commit -m "Rebuild site" && git push
+```
 
 ## Design system (derived from the logo)
 
