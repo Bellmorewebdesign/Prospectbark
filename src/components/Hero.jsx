@@ -1,166 +1,98 @@
 import { useRef } from 'react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
-import { ArrowRight, ArrowDown } from 'lucide-react'
-import huskyImg from '../assets/husky.webp'
-import groupImg from '../assets/group_of-dogs.webp'
+import { ArrowDown, ArrowRight, Phone } from 'lucide-react'
+import heroImg from '../assets/group_of-dogs.webp'
+import dogImg from '../assets/happy_dawg.webp'
+import birthdayImg from '../assets/birthday_dogo.webp'
 import { SITE } from '../data/site.js'
-import Stars from './ui/Stars.jsx'
 import MagneticButton from './ui/MagneticButton.jsx'
 
-const LINES = [
-  { text: 'Big care for', cls: '' },
-  { text: "Brooklyn's", cls: '' },
-  { text: 'best friends.', cls: 'hero__accent italic' },
-]
+const TITLE = ['THEY CALL IT', 'DAYCARE.', 'YOUR DOG CALLS IT', 'THE BEST DAY EVER.']
 
-export default function Hero({ onExplore, onContact }) {
-  const reduce = useReducedMotion()
+export default function Hero({ onFindCare, onMeet }) {
   const ref = useRef(null)
+  const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-
-  const yImg = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -70])
-  const yBadge = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 48])
-  const yMini = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -34])
-  const yCopy = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 40])
-
-  const container = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.09, delayChildren: 0.15 } },
-  }
-  const lineVar = {
-    hidden: reduce ? { opacity: 0 } : { y: '115%' },
-    show: {
-      y: '0%',
-      opacity: 1,
-      transition: { duration: 0.95, ease: [0.16, 1, 0.3, 1] },
-    },
-  }
-  const fade = {
-    hidden: reduce ? { opacity: 0 } : { opacity: 0, y: 20 },
-    show: (i = 0) => ({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.55 + i * 0.1 },
-    }),
-  }
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 92])
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -70])
+  const portraitY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 48])
 
   return (
-    <section className="hero" ref={ref} aria-label="Introduction">
-      <div className="hero__aura" aria-hidden="true" />
+    <section className="home-hero" ref={ref} aria-label="ProspectBArk introduction" data-cursor-dark>
+      <motion.div className="home-hero__backdrop" style={{ y: imageY }}>
+        <motion.img
+          src={heroImg}
+          alt="Dogs gathered together at ProspectBArk daycare"
+          width="1214"
+          height="908"
+          fetchPriority="high"
+          initial={reduce ? { opacity: 1 } : { opacity: 0, scale: 1.08 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+        />
+      </motion.div>
+      <div className="home-hero__shade" aria-hidden="true" />
+      <div className="home-hero__brandtype" aria-hidden="true">PROSPECT BARK</div>
 
-      <div className="container hero__grid">
-        <motion.div className="hero__copy" style={{ y: yCopy }} variants={container} initial="hidden" animate="show">
-          <motion.p className="eyebrow hero__eyebrow" variants={fade} custom={0}>
-            Brooklyn pet care · est. 2010
-          </motion.p>
-
-          <h1 className="hero__title display">
-            {LINES.map((l, i) => (
-              <span className="hero__line-mask" key={i}>
-                <motion.span className={`hero__line ${l.cls}`} variants={lineVar}>
-                  {l.text}
-                </motion.span>
-              </span>
-            ))}
-          </h1>
-
-          <motion.p className="hero__sub" variants={fade} custom={1}>
-            Trusted dog daycare, dog walking, and pet sitting — looking after the
-            neighborhood's dogs and cats since 2010.
-          </motion.p>
-
-          <motion.div className="hero__actions" variants={fade} custom={2}>
-            <MagneticButton className="btn" onClick={onExplore}>
-              <span>Explore Our Services</span>
-              <ArrowRight className="btn-arrow" size={18} />
-            </MagneticButton>
-            <MagneticButton className="btn btn--ghost" onClick={onContact} strength={0.2}>
-              <span>Get In Touch</span>
-            </MagneticButton>
-          </motion.div>
-
-          <motion.a
-            className="hero__rating"
-            href={SITE.rating.href}
-            target="_blank"
-            rel="noreferrer"
-            variants={fade}
-            custom={3}
-            data-cursor
-          >
-            <Stars value={SITE.rating.stars} size={17} label={`${SITE.rating.stars} out of 5`} />
-            <span className="hero__rating-text">
-              <strong>{SITE.rating.stars}</strong> Google rating
-              <span className="hero__rating-sep" aria-hidden="true">·</span>
-              {SITE.rating.reviews} reviews
-            </span>
-          </motion.a>
+      <div className="shell home-hero__inner">
+        <motion.div className="home-hero__meta" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+          <span>Brooklyn pet care</span>
+          <span>Since 2010</span>
         </motion.div>
 
-        <div className="hero__media">
-          <motion.div
-            className="hero__arch"
-            style={{ y: yImg }}
-            initial={reduce ? { opacity: 0 } : { clipPath: 'inset(100% 0 0 0)', opacity: 0 }}
-            animate={reduce ? { opacity: 1 } : { clipPath: 'inset(0% 0 0 0)', opacity: 1 }}
-            transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          >
-            <div className="frame frame--arch frame--ruled hero__frame">
-              <img
-                src={huskyImg}
-                alt="A husky with one blue and one brown eye, smiling on an autumn walk by the water in Brooklyn"
-                width="1217"
-                height="1201"
-                fetchpriority="high"
-              />
-            </div>
-            <span className="hero__arch-outline" aria-hidden="true" />
-          </motion.div>
-
-          <motion.a
-            className="hero__badge"
-            href={SITE.rating.href}
-            target="_blank"
-            rel="noreferrer"
-            style={{ y: yBadge }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 1 }}
-            data-cursor
-            aria-label={`${SITE.rating.stars} stars from ${SITE.rating.reviews} Google reviews`}
-          >
-            <span className="hero__badge-num">4.8</span>
-            <span className="hero__badge-meta">
-              <Stars value={SITE.rating.stars} size={13} />
-              <span>{SITE.rating.reviews} Google reviews</span>
+        <motion.h1 className="home-hero__title" style={{ y: titleY }}>
+          {TITLE.map((line, index) => (
+            <span className={index === 3 ? 'is-accent' : ''} key={line}>
+              <motion.i
+                initial={reduce ? { opacity: 0 } : { y: '115%' }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.08 + index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              >
+                {line}
+              </motion.i>
             </span>
-          </motion.a>
+          ))}
+        </motion.h1>
 
-          <motion.div
-            className="hero__mini"
-            style={{ y: yMini }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 1.15 }}
-            aria-hidden="true"
-          >
-            <img src={groupImg} alt="" width="1214" height="908" loading="lazy" />
-          </motion.div>
-        </div>
+        <motion.div
+          className="home-hero__portrait"
+          style={{ y: portraitY }}
+          initial={reduce ? { opacity: 1 } : { opacity: 0, rotate: 4, x: 36 }}
+          animate={{ opacity: 1, rotate: -2, x: 0 }}
+          transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <img src={dogImg} alt="A happy ProspectBArk dog outside in Brooklyn" width="1142" height="1193" />
+          <span>Good day, confirmed.</span>
+        </motion.div>
+
+        <motion.div
+          className="home-hero__postcard"
+          initial={reduce ? { opacity: 1 } : { opacity: 0, rotate: -8, y: 22 }}
+          animate={{ opacity: 1, rotate: 4, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.52, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <img src={birthdayImg} alt="A dog celebrating a birthday at daycare" width="1500" height="1088" />
+          <strong>The clubhouse</strong>
+        </motion.div>
+
+        <motion.div className="home-hero__footer" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65 }}>
+          <div className="home-hero__actions">
+            <MagneticButton className="button button--gold" onClick={onFindCare}>
+              Find the right care <ArrowRight size={18} />
+            </MagneticButton>
+            <button className="text-link text-link--light" onClick={onMeet}>Meet ProspectBArk</button>
+          </div>
+          <a className="home-hero__call" href={SITE.phoneHref}><Phone size={17} /> Call {SITE.phone}</a>
+          <a className="home-hero__rating" href={SITE.rating.href} target="_blank" rel="noreferrer">
+            <strong>{SITE.rating.stars}</strong>
+            <span>★★★★★<small>{SITE.rating.reviews} Google reviews</small></span>
+          </a>
+        </motion.div>
       </div>
 
-      <motion.button
-        className="hero__scroll"
-        onClick={onExplore}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.6 }}
-        aria-label="Scroll to services"
-        data-cursor
-      >
-        <span>Scroll</span>
-        <ArrowDown size={16} className="hero__scroll-arrow" />
-      </motion.button>
+      <button className="home-hero__scroll" onClick={onFindCare} aria-label="Scroll to find the right care">
+        <ArrowDown size={17} />
+      </button>
     </section>
   )
 }

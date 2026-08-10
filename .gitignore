@@ -1,5 +1,7 @@
 # dependencies
 node_modules
+.npm-cache/
+.pnpm-store/
 # build output
 dist
 dist-ssr

@@ -1,118 +1,112 @@
-import { motion, useReducedMotion } from 'framer-motion'
-import { Phone, Mail, MapPin, Clock, CalendarCheck, Instagram, Facebook, Navigation, Star } from 'lucide-react'
+import { useMemo, useRef, useState } from 'react'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { ArrowLeft, ArrowRight, Cat, Dog, Instagram, Mail, MapPin, Phone } from 'lucide-react'
 import { SITE } from '../data/site.js'
 import { useMockup } from '../context/MockupContext.jsx'
-import Reveal from '../components/ui/Reveal.jsx'
-import ContactForm from './ContactForm.jsx'
 
-const BOOKINGS = ['Book Daycare', 'Schedule a Walk', 'Request Pet Sitting']
+const STEP_META = [
+  { title: 'Who needs care?', field: 'petType' },
+  { title: 'What can we help with?', field: 'service' },
+  { title: 'Where are you?', field: 'location' },
+  { title: "What's your pet's name?", field: 'petName' },
+  { title: 'How can we reach you?', field: 'contact' },
+  { title: 'Anything we should know?', field: 'notes' },
+]
+
+const EMPTY = { petType: '', service: '', location: '', petName: '', name: '', email: '', phone: '', notes: '' }
 
 export default function Contact() {
-  const { showMockup } = useMockup()
+  const [step, setStep] = useState(0)
+  const [values, setValues] = useState(EMPTY)
+  const [error, setError] = useState('')
   const reduce = useReducedMotion()
+  const formRef = useRef(null)
+  const { showMockup } = useMockup()
+  const progress = useMemo(() => ((step + 1) / STEP_META.length) * 100, [step])
+
+  const update = (field, value) => {
+    setValues((current) => ({ ...current, [field]: value }))
+    setError('')
+  }
+
+  const validate = () => {
+    if (step === 0 && !values.petType) return 'Choose dog or cat to continue.'
+    if (step === 1 && !values.service) return 'Choose a service, or pick not sure.'
+    if (step === 2 && !values.location.trim()) return 'Add your neighborhood or ZIP code.'
+    if (step === 3 && !values.petName.trim()) return "Add your pet's name."
+    if (step === 4) {
+      if (!values.name.trim()) return 'Add your name.'
+      if (!/^\S+@\S+\.\S+$/.test(values.email.trim())) return 'Add a valid email address.'
+      if (!values.phone.trim()) return 'Add a phone number.'
+    }
+    return ''
+  }
+
+  const next = () => {
+    const message = validate()
+    if (message) {
+      setError(message)
+      formRef.current?.querySelector('input, button')?.focus()
+      return
+    }
+    setStep((current) => Math.min(current + 1, STEP_META.length - 1))
+  }
+
+  const submit = (event) => {
+    event.preventDefault()
+    showMockup({
+      icon: 'success',
+      tag: 'Inquiry preview',
+      title: `Thanks${values.petName ? `, ${values.petName}` : ''}!`,
+      body: 'This demo does not send form entries. Use the phone or email links to contact ProspectBArk.',
+    })
+  }
 
   return (
     <main id="main" className="contact-page">
-      <section className="container contact-page__hero">
-        <Reveal>
-          <p className="eyebrow">Contact</p>
-        </Reveal>
-        <Reveal delay={0.05}>
-          <h1 className="contact-page__title display">
-            Let’s talk about <span className="italic text-gold">your pet.</span>
-          </h1>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <p className="contact-page__lead text-muted">
-            Questions, a meet-and-greet, or ready to get on the calendar — reach a real
-            Brooklyn human here. We usually reply the same day.
-          </p>
-        </Reveal>
-        <Reveal delay={0.15}>
-          <div className="contact-page__chips">
-            <span className="chip"><Star size={15} className="text-gold" style={{ fill: 'var(--gold-500)' }} /> {SITE.rating.stars} · {SITE.rating.reviews} reviews</span>
-            <span className="chip"><Clock size={15} /> {SITE.hours}</span>
-          </div>
-        </Reveal>
+      <section className="contact-intro" data-cursor-dark>
+        <div className="shell"><p className="kicker kicker--light">Get started</p><h1>Let's find<br />the right care.</h1><p>Tell us a little at a time. It takes about a minute.</p></div>
       </section>
 
-      <section className="container contact-page__body">
-        <Reveal className="contact-page__form-card" y={30} amount={0.1}>
-          <div className="contact-cta__card-head">
-            <h2 className="display">Send a note</h2>
-            <p className="text-muted">Tell us who we’d be caring for and what you need.</p>
-          </div>
-          <ContactForm id="page-contact" />
-        </Reveal>
-
-        <div className="contact-page__aside">
-          <Reveal className="infocard" amount={0.2}>
-            <h2 className="infocard__h display">Say hello</h2>
-            <ul className="infocard__list">
-              <li>
-                <span className="infocard__ico"><Phone size={18} /></span>
-                <span><span className="infocard__k">Call</span><a href={SITE.phoneHref} data-cursor>{SITE.phone}</a></span>
-              </li>
-              <li>
-                <span className="infocard__ico"><Mail size={18} /></span>
-                <span><span className="infocard__k">Email</span><a href={SITE.emailHref} data-cursor>{SITE.email}</a></span>
-              </li>
-              <li>
-                <span className="infocard__ico"><MapPin size={18} /></span>
-                <span><span className="infocard__k">Visit</span><a href={SITE.mapsHref} target="_blank" rel="noreferrer" data-cursor>{SITE.address.full}</a></span>
-              </li>
-              <li>
-                <span className="infocard__ico"><Clock size={18} /></span>
-                <span><span className="infocard__k">Hours</span>{SITE.hours}</span>
-              </li>
-            </ul>
-
-            <div className="infocard__social">
-              <a href={SITE.social.instagram.href} target="_blank" rel="noreferrer" data-cursor>
-                <Instagram size={18} /> {SITE.social.instagram.handle}
-              </a>
-              <a href={SITE.social.facebook.href} target="_blank" rel="noreferrer" data-cursor>
-                <Facebook size={18} /> Facebook
-              </a>
+      <section className="contact-wizard section">
+        <div className="shell contact-wizard__grid">
+          <form ref={formRef} className="wizard" onSubmit={submit} noValidate>
+            <div className="wizard__progress"><div><span>Step {step + 1} of {STEP_META.length}</span><strong>{STEP_META[step].title}</strong></div><i><b style={{ width: `${progress}%` }} /></i></div>
+            <AnimatePresence mode="wait">
+              <motion.div className="wizard__step" key={step} initial={reduce ? { opacity: 0 } : { opacity: 0, x: 26 }} animate={{ opacity: 1, x: 0 }} exit={reduce ? { opacity: 0 } : { opacity: 0, x: -22 }} transition={{ duration: 0.35 }}>
+                <StepFields step={step} values={values} update={update} />
+              </motion.div>
+            </AnimatePresence>
+            {error ? <p className="wizard__error" role="alert">{error}</p> : null}
+            <div className="wizard__controls">
+              <button type="button" className="wizard__back" onClick={() => setStep((current) => Math.max(0, current - 1))} disabled={step === 0}><ArrowLeft size={17} /> Back</button>
+              {step < STEP_META.length - 1 ? <button type="button" className="button button--ink" onClick={next}>Next <ArrowRight size={17} /></button> : <button type="submit" className="button button--gold">Let's talk <ArrowRight size={17} /></button>}
             </div>
-          </Reveal>
+          </form>
 
-          <Reveal className="bookcard" delay={0.08} amount={0.2}>
-            <h2 className="bookcard__h display">Jump the line</h2>
-            <p className="text-muted bookcard__sub">Booking connects to ProspectBArk!’s system in production.</p>
-            <div className="bookcard__grid">
-              {BOOKINGS.map((b) => (
-                <button key={b} className="bookpill bookpill--light" onClick={() => showMockup('booking')}>
-                  <CalendarCheck size={16} aria-hidden="true" />
-                  {b}
-                </button>
-              ))}
-            </div>
-          </Reveal>
-
-          <Reveal className="mapcard" delay={0.12} amount={0.2}>
-            <div className="mapcard__canvas" role="img" aria-label={`Map area for ${SITE.address.full}`}>
-              <span className="mapcard__grid" aria-hidden="true" />
-              <span className="mapcard__road mapcard__road--h" aria-hidden="true" />
-              <span className="mapcard__road mapcard__road--v" aria-hidden="true" />
-              <motion.span
-                className="mapcard__pin"
-                aria-hidden="true"
-                initial={reduce ? false : { y: -10, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ type: 'spring', stiffness: 260, damping: 16 }}
-              >
-                <MapPin size={22} strokeWidth={2.4} />
-              </motion.span>
-              <span className="mapcard__label">ProspectBArk! · {SITE.address.street}</span>
-            </div>
-            <a className="btn btn--sm btn--block mapcard__btn" href={SITE.mapsHref} target="_blank" rel="noreferrer">
-              <span>Get directions <Navigation size={15} /></span>
-            </a>
-          </Reveal>
+          <aside className="contact-direct" aria-label="Direct contact options">
+            <p className="kicker">Prefer the direct route?</p><h2>Talk to a<br />real person.</h2>
+            <a href={SITE.phoneHref}><Phone size={19} /><span><small>Call</small>{SITE.phone}</span></a>
+            <a href={SITE.emailHref}><Mail size={19} /><span><small>Email</small>{SITE.email}</span></a>
+            <a href={SITE.mapsHref} target="_blank" rel="noreferrer"><MapPin size={19} /><span><small>Visit</small>{SITE.address.full}</span></a>
+            <a href={SITE.social.instagram.href} target="_blank" rel="noreferrer"><Instagram size={19} /><span><small>Instagram</small>{SITE.social.instagram.handle}</span></a>
+            <p className="contact-direct__note">This concept does not send form data. Phone, email and map links remain available.</p>
+          </aside>
         </div>
       </section>
     </main>
   )
+}
+
+function StepFields({ step, values, update }) {
+  if (step === 0) return <><p className="wizard__eyebrow">Step one</p><h2>Dog or cat?</h2><div className="wizard__choices wizard__choices--pet"><Choice active={values.petType === 'dog'} onClick={() => update('petType', 'dog')}><Dog size={36} /> Dog</Choice><Choice active={values.petType === 'cat'} onClick={() => update('petType', 'cat')}><Cat size={36} /> Cat</Choice></div></>
+  if (step === 1) return <><p className="wizard__eyebrow">Choose the closest fit</p><h2>What sounds right?</h2><div className="wizard__choices">{['Daycare', 'Dog walking', 'Pet sitting', 'Not sure'].map((item) => <Choice key={item} active={values.service === item} onClick={() => update('service', item)}>{item}</Choice>)}</div></>
+  if (step === 2) return <><label className="wizard__label" htmlFor="location">Your neighborhood or ZIP</label><input id="location" value={values.location} onChange={(event) => update('location', event.target.value)} autoComplete="postal-code" placeholder="Park Slope or 11215" /></>
+  if (step === 3) return <><label className="wizard__label" htmlFor="pet-name">Your pet's name</label><input id="pet-name" value={values.petName} onChange={(event) => update('petName', event.target.value)} placeholder="The name they answer to" autoFocus /></>
+  if (step === 4) return <><div className="wizard__field"><label htmlFor="your-name">Your name</label><input id="your-name" value={values.name} onChange={(event) => update('name', event.target.value)} autoComplete="name" /></div><div className="wizard__field-row"><div className="wizard__field"><label htmlFor="email">Email</label><input id="email" type="email" value={values.email} onChange={(event) => update('email', event.target.value)} autoComplete="email" /></div><div className="wizard__field"><label htmlFor="phone">Phone</label><input id="phone" type="tel" value={values.phone} onChange={(event) => update('phone', event.target.value)} autoComplete="tel" /></div></div></>
+  return <><label className="wizard__label" htmlFor="notes">Anything we should know?</label><textarea id="notes" rows="6" value={values.notes} onChange={(event) => update('notes', event.target.value)} placeholder="Temperament, timing, routines or questions. A short note is fine." /><p className="wizard__optional">Optional</p></>
+}
+
+function Choice({ active, onClick, children }) {
+  return <button type="button" className={active ? 'is-active' : ''} onClick={onClick} aria-pressed={active}>{children}<span>{active ? 'Selected' : 'Choose'}</span></button>
 }

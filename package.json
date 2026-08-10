@@ -3,10 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "High-end website redesign concept for ProspectBArk! — a Brooklyn pet-care company.",
+  "description": "Editorial website redesign concept for ProspectBArk!, a Brooklyn pet care company.",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite --configLoader runner",
+    "build": "vite build --configLoader runner",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -17,6 +17,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.2",
-    "vite": "^5.4.9"
+    "vite": "^6.4.1"
   }
 }
