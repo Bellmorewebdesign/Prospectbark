@@ -33,6 +33,20 @@ export default function MockupModal({ payload, onClose }) {
     if (!open) return
     const onKey = (e) => {
       if (e.key === 'Escape') onClose()
+      if (e.key === 'Tab') {
+        const dialog = closeRef.current?.closest('[role="dialog"]')
+        const focusable = dialog?.querySelectorAll('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
+        if (!focusable?.length) return
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)

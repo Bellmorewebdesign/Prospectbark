@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react'
 
-// Minimal hash router — GitHub Pages safe (no server rewrites, no 404 on
-// refresh). Routes are the part after `#`, e.g. "#/", "#/contact".
+// Minimal hash router. GitHub Pages safe, with no server rewrites or refresh 404s.
+// Routes are the part after `#`, e.g. "#/", "#/contact".
 // In-page section anchors are handled separately via scrollToSection().
 
 function parse() {

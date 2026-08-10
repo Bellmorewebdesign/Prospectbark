@@ -1,44 +1,50 @@
 import daycareImg from '../assets/group_of-dogs.webp'
 import walkingImg from '../assets/happy_dawg.webp'
 import sittingImg from '../assets/kittycat.webp'
+import birthdayImg from '../assets/birthday_dogo.webp'
+import huskyImg from '../assets/husky.webp'
+import facilityImg from '../assets/authentic/daycare-play.webp'
 
-// Service copy is descriptive of the service categories the client offers.
-// No prices, guarantees, or unverified specifics are stated as fact.
 export const SERVICES = [
   {
     id: 'daycare',
-    index: '01',
+    route: '/daycare',
+    number: '01',
+    short: 'Daycare',
     name: 'Dog Daycare',
-    kicker: 'The clubhouse',
-    blurb:
-      'A supervised, social day in the neighborhood — playgroups matched by size and temperament, rest built into the rhythm, and a happily tired pup at pickup.',
-    points: ['Matched playgroups', 'Nap & downtime', 'Photo updates'],
+    headline: 'Big day. Big nap later.',
+    intro: 'A full day of play, rest and familiar faces, with a team keeping an eye on the details.',
     image: daycareImg,
-    alt: 'A group of five happy dogs looking up together at ProspectBArk! daycare',
-    accent: 'var(--gold-500)',
+    secondaryImage: facilityImg,
+    alt: 'A group of dogs looking up together at ProspectBArk daycare',
+    tone: 'gold',
   },
   {
     id: 'walking',
-    index: '02',
+    route: '/walking',
+    number: '02',
+    short: 'Walking',
     name: 'Dog Walking',
-    kicker: 'On the leash',
-    blurb:
-      'Reliable walks that keep tails wagging and routines intact — around the block or all the way to the park, with a walker your dog is genuinely glad to see.',
-    points: ['Solo & small group', 'Consistent walkers', 'Park adventures'],
+    headline: 'Brooklyn blocks. Better days.',
+    intro: 'A dependable break in the day from trained caregivers who know the neighborhood.',
     image: walkingImg,
-    alt: 'A smiling black Labrador on a walk across a Brooklyn footbridge',
-    accent: 'var(--clay-500)',
+    secondaryImage: huskyImg,
+    alt: 'A happy dog on a walk in Brooklyn',
+    tone: 'clay',
   },
   {
     id: 'sitting',
-    index: '03',
+    route: '/pet-sitting',
+    number: '03',
+    short: 'Pet Sitting',
     name: 'Pet Sitting',
-    kicker: 'Home comforts',
-    blurb:
-      'Dogs, cats, and the occasional small friend — cared for on their own turf while you travel. Same food, same couch, same schedule, minus the stress.',
-    points: ['In-home visits', 'Cats welcome', 'Travel-friendly'],
+    headline: 'Their routine. Their home. Real care.',
+    intro: 'For dogs and cats who are happiest at home while their people are away.',
     image: sittingImg,
-    alt: 'A calm tortoiseshell cat with green eyes resting at home',
-    accent: 'var(--pine-600)',
+    secondaryImage: birthdayImg,
+    alt: 'A calm cat resting at home',
+    tone: 'teal',
   },
 ]
+
+export const SERVICE_BY_ROUTE = Object.fromEntries(SERVICES.map((service) => [service.route, service]))
