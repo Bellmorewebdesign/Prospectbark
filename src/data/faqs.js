@@ -3,12 +3,12 @@
 // prices, hours beyond what's supplied, or policy specifics.
 export const FAQS = [
   {
-    q: 'Where in Brooklyn are you based?',
-    a: 'Our home base is 578 5th Ave in Brooklyn, NY 11215 — right in the neighborhood. Say hi any time, or give us a ring at (646) 377-1575.',
+    q: 'Where are you based, and where do you serve?',
+    a: 'Our home base is 578 5th Ave in Brooklyn, NY 11215, and we care for pets across Brooklyn and Manhattan. Say hi any time, or give us a ring at (646) 377-1575.',
   },
   {
     q: 'What services do you offer?',
-    a: 'Three core ways we help: dog daycare, dog walking, and pet sitting. Cats are absolutely welcome for sitting, too. Tell us what your pet needs and we’ll point you to the right fit.',
+    a: 'Four core ways we help: dog daycare, dog walking, pet sitting, and vacation care for when you’re out of town. Cats are absolutely welcome for sitting, too. Tell us what your pet needs and we’ll point you to the right fit.',
   },
   {
     q: 'How long have you been doing this?',

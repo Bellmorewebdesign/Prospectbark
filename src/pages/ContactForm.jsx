@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Check, Loader2, Send } from 'lucide-react'
 
-const SERVICES = ['Dog Walking', 'Dog Daycare', 'Pet Sitting', 'General Question']
+const SERVICES = ['Dog Walking', 'Dog Daycare', 'Pet Sitting', 'Vacation Care', 'General Question']
 const PET_TYPES = ['Dog', 'Cat', 'Other']
 
 const EMPTY = {

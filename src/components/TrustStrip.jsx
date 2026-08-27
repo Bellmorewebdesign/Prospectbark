@@ -4,7 +4,7 @@ import Marquee from './ui/Marquee.jsx'
 const ITEMS = [
   { text: '4.8 Google Rating', star: true },
   { text: '129 Reviews' },
-  { text: 'Serving Brooklyn Since 2010' },
+  { text: 'Serving Brooklyn & Manhattan Since 2010' },
   { text: 'Women-Owned' },
   { text: 'Dog Daycare · Walking · Sitting' },
   { text: 'Asian-Owned' },

@@ -5,7 +5,7 @@ import { useMockup } from '../context/MockupContext.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import ContactForm from './ContactForm.jsx'
 
-const BOOKINGS = ['Book Daycare', 'Schedule a Walk', 'Request Pet Sitting']
+const BOOKINGS = ['Book Daycare', 'Schedule a Walk', 'Request Pet Sitting', 'Plan Vacation Care']
 
 export default function Contact() {
   const { showMockup } = useMockup()
@@ -25,12 +25,13 @@ export default function Contact() {
         <Reveal delay={0.1}>
           <p className="contact-page__lead text-muted">
             Questions, a meet-and-greet, or ready to get on the calendar — reach a real
-            Brooklyn human here. We usually reply the same day.
+            human here. We usually reply the same day.
           </p>
         </Reveal>
         <Reveal delay={0.15}>
           <div className="contact-page__chips">
             <span className="chip"><Star size={15} className="text-gold" style={{ fill: 'var(--gold-500)' }} /> {SITE.rating.stars} · {SITE.rating.reviews} reviews</span>
+            <span className="chip"><MapPin size={15} /> Serving Brooklyn &amp; Manhattan</span>
             <span className="chip"><Clock size={15} /> {SITE.hours}</span>
           </div>
         </Reveal>

@@ -65,8 +65,8 @@ export default function Hero({ onExplore, onContact }) {
           </h1>
 
           <motion.p className="hero__sub" variants={fade} custom={1}>
-            Trusted dog daycare, dog walking, and pet sitting — looking after the
-            neighborhood's dogs and cats since 2010.
+            Trusted dog daycare, walking, sitting, and vacation care across
+            Brooklyn and Manhattan — caring for the city's dogs and cats since 2010.
           </motion.p>
 
           <motion.div className="hero__actions" variants={fade} custom={2}>

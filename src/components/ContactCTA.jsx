@@ -4,7 +4,7 @@ import { useMockup } from '../context/MockupContext.jsx'
 import Reveal from './ui/Reveal.jsx'
 import ContactForm from '../pages/ContactForm.jsx'
 
-const BOOKINGS = ['Book Daycare', 'Schedule a Walk', 'Request Pet Sitting']
+const BOOKINGS = ['Book Daycare', 'Schedule a Walk', 'Request Pet Sitting', 'Plan Vacation Care']
 
 export default function ContactCTA({ onContact }) {
   const { showMockup } = useMockup()
@@ -23,7 +23,7 @@ export default function ContactCTA({ onContact }) {
           <Reveal delay={0.1}>
             <p className="contact-cta__lead">
               Tell us a little about your dog or cat and what you need. We’ll take it
-              from there — a real Brooklyn human, not a phone tree.
+              from there — a real human, not a phone tree — across Brooklyn and Manhattan.
             </p>
           </Reveal>
 

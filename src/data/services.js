@@ -1,6 +1,7 @@
 import daycareImg from '../assets/group_of-dogs.webp'
 import walkingImg from '../assets/happy_dawg.webp'
 import sittingImg from '../assets/kittycat.webp'
+import vacationImg from '../assets/birthday_dogo.webp'
 
 // Service copy is descriptive of the service categories the client offers.
 // No prices, guarantees, or unverified specifics are stated as fact.
@@ -40,5 +41,17 @@ export const SERVICES = [
     image: sittingImg,
     alt: 'A calm tortoiseshell cat with green eyes resting at home',
     accent: 'var(--pine-600)',
+  },
+  {
+    id: 'vacation',
+    index: '04',
+    name: 'Vacation Care',
+    kicker: 'While you’re away',
+    blurb:
+      'Heading out of town? We keep your pet’s whole world steady while you travel — familiar routines, plenty of attention, and regular updates — so the only thing they really miss is you.',
+    points: ['Trusted while you travel', 'Familiar routines', 'Regular updates'],
+    image: vacationImg,
+    alt: 'A happy, relaxed dog well looked after at ProspectBArk! while its family is away',
+    accent: 'var(--gold-600)',
   },
 ]
