@@ -50,10 +50,10 @@ export default function About({ onContact }) {
           </Reveal>
           <Reveal delay={0.15}>
             <p className="text-muted about__body">
-              We’re a small Brooklyn team — women-owned, Asian-owned, and LGBTQ+ friendly —
-              that treats your dog like a regular and your cat like royalty, now caring
-              for pets across Brooklyn and Manhattan. Some of our pups have been coming
-              since they were puppies. A few of their humans have become our closest friends.
+              We’re a small Brooklyn team: women-owned, Asian-owned, and LGBTQ+ friendly.
+              We treat your dog like a regular and your cat like royalty, now caring for
+              pets across Brooklyn and Manhattan. Some of our pups have been coming since
+              they were puppies. A few of their humans have become our closest friends.
             </p>
           </Reveal>
           <Reveal delay={0.2}>

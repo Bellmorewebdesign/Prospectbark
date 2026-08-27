@@ -12,7 +12,7 @@ const BEATS = [
   {
     k: '02',
     t: 'Good days become a routine.',
-    d: 'Familiar faces, a steady rhythm, a schedule your pet can count on — day after day, block after block.',
+    d: 'Familiar faces, a steady rhythm, a schedule your pet can count on, day after day, block after block.',
   },
   {
     k: '03',

@@ -12,7 +12,7 @@ export const SERVICES = [
     name: 'Dog Daycare',
     kicker: 'The clubhouse',
     blurb:
-      'A supervised, social day in the neighborhood — playgroups matched by size and temperament, rest built into the rhythm, and a happily tired pup at pickup.',
+      'A supervised, social day in the neighborhood, with playgroups matched by size and temperament, rest built into the rhythm, and a happily tired pup at pickup.',
     points: ['Matched playgroups', 'Nap & downtime', 'Photo updates'],
     image: daycareImg,
     alt: 'A group of five happy dogs looking up together at ProspectBArk! daycare',
@@ -24,7 +24,7 @@ export const SERVICES = [
     name: 'Dog Walking',
     kicker: 'On the leash',
     blurb:
-      'Reliable walks that keep tails wagging and routines intact — around the block or all the way to the park, with a walker your dog is genuinely glad to see.',
+      'Reliable walks that keep tails wagging and routines intact, around the block or all the way to the park, with a walker your dog is genuinely glad to see.',
     points: ['Solo & small group', 'Consistent walkers', 'Park adventures'],
     image: walkingImg,
     alt: 'A smiling black Labrador on a walk across a Brooklyn footbridge',
@@ -36,7 +36,7 @@ export const SERVICES = [
     name: 'Pet Sitting',
     kicker: 'Home comforts',
     blurb:
-      'Dogs, cats, and the occasional small friend — cared for on their own turf while you travel. Same food, same couch, same schedule, minus the stress.',
+      'Dogs, cats, and the occasional small friend, cared for on their own turf while you travel. Same food, same couch, same schedule, minus the stress.',
     points: ['In-home visits', 'Cats welcome', 'Travel-friendly'],
     image: sittingImg,
     alt: 'A calm tortoiseshell cat with green eyes resting at home',
@@ -48,7 +48,7 @@ export const SERVICES = [
     name: 'Vacation Care',
     kicker: 'While you’re away',
     blurb:
-      'Heading out of town? We keep your pet’s whole world steady while you travel — familiar routines, plenty of attention, and regular updates — so the only thing they really miss is you.',
+      'Heading out of town? We keep your pet’s whole world steady while you travel, with familiar routines, plenty of attention, and regular updates, so the only thing they really miss is you.',
     points: ['Trusted while you travel', 'Familiar routines', 'Regular updates'],
     image: vacationImg,
     alt: 'A happy, relaxed dog well looked after at ProspectBArk! while its family is away',

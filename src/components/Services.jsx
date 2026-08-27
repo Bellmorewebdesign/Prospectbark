@@ -23,13 +23,13 @@ export default function Services() {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 id="services-h" className="services__title display">
-              Three ways to make <span className="italic text-gold">their day.</span>
+              Four ways to make <span className="italic text-gold">their day.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="services__intro text-muted">
-              Daycare, walks, and sitting — each one shaped around your pet's routine,
-              not the other way around.
+              Daycare, walks, sitting, and vacation care. Each one shaped around your
+              pet's routine, not the other way around.
             </p>
           </Reveal>
         </div>

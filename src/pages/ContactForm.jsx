@@ -90,7 +90,7 @@ export default function ContactForm({ id = 'contact-form' }) {
             <p className="cform__success-text">
               This form is part of the ProspectBArk! redesign concept. In the production
               website, your inquiry would connect straight to ProspectBArk!’s contact
-              system — nothing was sent from this preview.
+              system. Nothing was sent from this preview.
             </p>
             <button className="btn btn--ghost" onClick={reset}>
               <span>Send another</span>
@@ -229,7 +229,7 @@ export default function ContactForm({ id = 'contact-form' }) {
               </span>
             </button>
             <p className="cform__disclaimer">
-              Concept preview — this form validates and confirms, but doesn’t send data anywhere.
+              Concept preview. This form validates and confirms, but doesn’t send data anywhere.
             </p>
           </motion.form>
         )}

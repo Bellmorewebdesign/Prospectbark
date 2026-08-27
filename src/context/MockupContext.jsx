@@ -17,7 +17,7 @@ const PRESETS = {
     tag: 'Concept preview',
     title: 'A preview of the full experience',
     body:
-      'Dedicated service pages and online booking are part of the complete concept. They aren’t connected in this mockup — but this is exactly where your pet’s next great day would begin.',
+      'Dedicated service pages and online booking are part of the complete concept. They aren’t connected in this mockup, but this is exactly where your pet’s next great day would begin.',
   },
   generic: {
     icon: 'paw',

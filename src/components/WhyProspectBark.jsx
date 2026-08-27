@@ -9,7 +9,7 @@ const REASONS = [
   {
     icon: ShieldCheck,
     t: 'Trusted since 2010',
-    d: "More than a decade looking after Brooklyn's animals — and still on a first-name basis with every one.",
+    d: "More than a decade looking after Brooklyn's animals, and still on a first-name basis with every one.",
   },
   {
     icon: HeartHandshake,
@@ -24,7 +24,7 @@ const REASONS = [
   {
     icon: Cat,
     t: 'Cats welcome too',
-    d: 'Sitting for the whole household — whiskers, floof, and everyone in between.',
+    d: 'Sitting for the whole household: whiskers, floof, and everyone in between.',
   },
 ]
 

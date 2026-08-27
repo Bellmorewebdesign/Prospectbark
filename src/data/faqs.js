@@ -12,7 +12,7 @@ export const FAQS = [
   },
   {
     q: 'How long have you been doing this?',
-    a: 'Since 2010. That’s more than a decade of Brooklyn walks, daycare days, and vacation sits — and a lot of very good dogs (and cats) along the way.',
+    a: 'Since 2010. That’s more than a decade of Brooklyn walks, daycare days, and vacation sits, plus a lot of very good dogs (and cats) along the way.',
   },
   {
     q: 'Is my pet a good fit for daycare?',
@@ -20,6 +20,6 @@ export const FAQS = [
   },
   {
     q: 'How do I get started?',
-    a: 'Reach out through the contact page, email frontdesk@prospectbark.com, or call us. In this redesign concept, booking and inquiries would connect to ProspectBArk!’s existing system — for now, the forms show a friendly demo confirmation.',
+    a: 'Reach out through the contact page, email frontdesk@prospectbark.com, or call us. In this redesign concept, booking and inquiries would connect to ProspectBArk!’s existing system. For now, the forms show a friendly demo confirmation.',
   },
 ]

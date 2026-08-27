@@ -7,9 +7,9 @@ import MagneticButton from './ui/MagneticButton.jsx'
 // No fabricated customer quotes. These are clearly-labeled preview slots that
 // show how real Google reviews would present in the production site.
 const PREVIEWS = [
-  'This is where a real five-star Google review shines — in your customer’s own words.',
+  'This is where a real five-star Google review shines, in your customer’s own words.',
   'Your happiest pet parents, front and centre, pulled straight from your Google profile.',
-  'Room for the reviews that make new neighbours tap “book” — live-synced in production.',
+  'Room for the reviews that make new neighbours tap “book,” live-synced in production.',
 ]
 
 export default function Reviews() {
@@ -45,7 +45,7 @@ export default function Reviews() {
 
           <Reveal className="reviews__note" delay={0.1}>
             <p>
-              We didn’t write a single word below — your real Google reviews drop right
+              We didn’t write a single word below. Your real Google reviews drop right
               into these slots when the site goes live.
             </p>
           </Reveal>

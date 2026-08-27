@@ -19,7 +19,7 @@ export default function Footer({ onNav }) {
             <span className="footer__mark display">ProspectBArk!</span>
             <p className="footer__statement">
               Pet care across Brooklyn and Manhattan, built on knowing your animal by
-              name. Daycare, walks, sitting, and vacation care — the good life, on repeat.
+              name. Daycare, walks, sitting, and vacation care. The good life, on repeat.
             </p>
             <div className="footer__social">
               <a href={SITE.social.instagram.href} target="_blank" rel="noreferrer" aria-label="ProspectBArk! on Instagram" data-cursor>

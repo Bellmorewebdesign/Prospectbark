@@ -156,7 +156,7 @@ export default function InstagramCarousel() {
                   target="_blank"
                   rel="noreferrer"
                   tabIndex={isClone ? -1 : 0}
-                  aria-label={`${post.alt} — view on Instagram`}
+                  aria-label={`${post.alt}, view on Instagram`}
                 >
                   <img src={post.image} alt={isClone ? '' : post.alt} loading="lazy" />
                   <span className="igc__badge" aria-hidden="true">

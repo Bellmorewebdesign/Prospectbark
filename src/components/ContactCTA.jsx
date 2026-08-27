@@ -22,8 +22,8 @@ export default function ContactCTA({ onContact }) {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="contact-cta__lead">
-              Tell us a little about your dog or cat and what you need. We’ll take it
-              from there — a real human, not a phone tree — across Brooklyn and Manhattan.
+              Tell us a little about your dog or cat and what you need, and we’ll take it
+              from there. A real human, not a phone tree, serving Brooklyn and Manhattan.
             </p>
           </Reveal>
 

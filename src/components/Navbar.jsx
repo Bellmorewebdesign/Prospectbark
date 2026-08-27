@@ -51,7 +51,7 @@ export default function Navbar({ path, onNav, onGetStarted }) {
               e.preventDefault()
               handleLink({ route: '/' })
             }}
-            aria-label={`${SITE.name} — home`}
+            aria-label={`${SITE.name}, home`}
             data-cursor
           >
             <img src={logo} alt={SITE.name} className="nav__logo" width="160" height="78" />

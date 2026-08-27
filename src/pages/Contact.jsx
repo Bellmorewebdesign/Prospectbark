@@ -24,7 +24,7 @@ export default function Contact() {
         </Reveal>
         <Reveal delay={0.1}>
           <p className="contact-page__lead text-muted">
-            Questions, a meet-and-greet, or ready to get on the calendar — reach a real
+            Questions, a meet-and-greet, or ready to get on the calendar? Reach a real
             human here. We usually reply the same day.
           </p>
         </Reveal>

@@ -63,7 +63,7 @@ export default function FAQ({ onContact }) {
           <Reveal delay={0.1}>
             <p className="text-muted faq__aside-text">
               Still curious about your pet in particular? That’s the best kind of
-              question — let’s talk it through.
+              question, so let’s talk it through.
             </p>
           </Reveal>
           <Reveal delay={0.15}>
