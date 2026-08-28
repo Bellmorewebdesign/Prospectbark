@@ -1,50 +1,57 @@
 import daycareImg from '../assets/group_of-dogs.webp'
 import walkingImg from '../assets/happy_dawg.webp'
 import sittingImg from '../assets/kittycat.webp'
-import birthdayImg from '../assets/birthday_dogo.webp'
-import huskyImg from '../assets/husky.webp'
-import facilityImg from '../assets/authentic/daycare-play.webp'
+import vacationImg from '../assets/birthday_dogo.webp'
 
+// Service copy is descriptive of the service categories the client offers.
+// No prices, guarantees, or unverified specifics are stated as fact.
 export const SERVICES = [
   {
     id: 'daycare',
-    route: '/daycare',
-    number: '01',
-    short: 'Daycare',
+    index: '01',
     name: 'Dog Daycare',
-    headline: 'Big day. Big nap later.',
-    intro: 'A full day of play, rest and familiar faces, with a team keeping an eye on the details.',
+    kicker: 'The clubhouse',
+    blurb:
+      'A supervised, social day in the neighborhood, with playgroups matched by size and temperament, rest built into the rhythm, and a happily tired pup at pickup.',
+    points: ['Matched playgroups', 'Nap & downtime', 'Photo updates'],
     image: daycareImg,
-    secondaryImage: facilityImg,
-    alt: 'A group of dogs looking up together at ProspectBArk daycare',
-    tone: 'gold',
+    alt: 'A group of five happy dogs looking up together at ProspectBArk! daycare',
+    accent: 'var(--gold-500)',
   },
   {
     id: 'walking',
-    route: '/walking',
-    number: '02',
-    short: 'Walking',
+    index: '02',
     name: 'Dog Walking',
-    headline: 'Brooklyn blocks. Better days.',
-    intro: 'A dependable break in the day from trained caregivers who know the neighborhood.',
+    kicker: 'On the leash',
+    blurb:
+      'Reliable walks that keep tails wagging and routines intact, around the block or all the way to the park, with a walker your dog is genuinely glad to see.',
+    points: ['Solo & small group', 'Consistent walkers', 'Park adventures'],
     image: walkingImg,
-    secondaryImage: huskyImg,
-    alt: 'A happy dog on a walk in Brooklyn',
-    tone: 'clay',
+    alt: 'A smiling black Labrador on a walk across a Brooklyn footbridge',
+    accent: 'var(--clay-500)',
   },
   {
     id: 'sitting',
-    route: '/pet-sitting',
-    number: '03',
-    short: 'Pet Sitting',
+    index: '03',
     name: 'Pet Sitting',
-    headline: 'Their routine. Their home. Real care.',
-    intro: 'For dogs and cats who are happiest at home while their people are away.',
+    kicker: 'Home comforts',
+    blurb:
+      'Dogs, cats, and the occasional small friend, cared for on their own turf while you travel. Same food, same couch, same schedule, minus the stress.',
+    points: ['In-home visits', 'Cats welcome', 'Travel-friendly'],
     image: sittingImg,
-    secondaryImage: birthdayImg,
-    alt: 'A calm cat resting at home',
-    tone: 'teal',
+    alt: 'A calm tortoiseshell cat with green eyes resting at home',
+    accent: 'var(--pine-600)',
+  },
+  {
+    id: 'vacation',
+    index: '04',
+    name: 'Vacation Care',
+    kicker: 'While you’re away',
+    blurb:
+      'Heading out of town? We keep your pet’s whole world steady while you travel, with familiar routines, plenty of attention, and regular updates, so the only thing they really miss is you.',
+    points: ['Trusted while you travel', 'Familiar routines', 'Regular updates'],
+    image: vacationImg,
+    alt: 'A happy, relaxed dog well looked after at ProspectBArk! while its family is away',
+    accent: 'var(--gold-600)',
   },
 ]
-
-export const SERVICE_BY_ROUTE = Object.fromEntries(SERVICES.map((service) => [service.route, service]))

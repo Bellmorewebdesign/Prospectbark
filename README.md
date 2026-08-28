@@ -1,61 +1,85 @@
-# ProspectBArk! Website Redesign
+# ProspectBArk! — Website Redesign Concept
 
-An interactive redesign concept for ProspectBArk!, a Brooklyn pet care company offering dog daycare, dog walking and pet sitting.
+A high-end, interactive redesign concept for **ProspectBArk!**, an award-winning,
+women-owned Brooklyn pet-care company (dog daycare · dog walking · pet sitting,
+serving the neighborhood since 2010).
 
-The site is built with React, Vite and Framer Motion. It is fully static, uses no API keys and can run on GitHub Pages.
+Built as a fast, fully static frontend — **React + Vite + Framer Motion** — that
+runs anywhere, including GitHub Pages, with **no backend, no API keys, and no
+environment variables required to view it.**
 
-The inquiry form is a demo. It validates entries and shows a confirmation, but does not send or store form data.
+> This is a design concept. Booking and contact forms validate and confirm with a
+> polished in-mockup notice; in production they would connect to ProspectBArk!'s
+> existing systems. No data is sent anywhere.
 
 ## Run locally
 
 ```bash
 npm install
-npm run dev
+npm run dev      # local dev server
+npm run build    # production build → dist/
+npm run preview  # preview the production build
 ```
 
-Create the production build with:
+## Deploy to GitHub Pages (deploy from a branch)
+
+The production build is committed to the **`docs/`** folder, so GitHub Pages can
+serve it straight from the branch — no Actions, no build server.
+
+In the repo: **Settings → Pages → Build and deployment → Source → Deploy from a
+branch**, then choose your branch and set the folder to **`/docs`**. Save.
+
+It works at any repo sub-path because the app uses **relative asset paths**
+(`base: './'`) and **hash routing**, so there are no 404s on refresh.
+
+After changing any source, rebuild and commit `docs/`:
 
 ```bash
-npm run build
+npm run build   # regenerates docs/
+git add docs && git commit -m "Rebuild site" && git push
 ```
 
-The build is written to `docs/` for the repository's existing GitHub Pages setup.
+## Design system (derived from the logo)
 
-## Pages
+| Role            | Colour                              |
+| --------------- | ----------------------------------- |
+| Pine (primary)  | `#1b3a2a` — from the PROSPECT outline |
+| Gold (accent)   | `#cd923f` — from the logo frame       |
+| Terracotta      | `#b8482a` — from the cat / brick      |
+| Cream (paper)   | `#faf6ec`                            |
+| Ink (text)      | `#17251c`                            |
 
-- Home
-- Dog daycare
-- Dog walking
-- Pet sitting
-- About
-- Contact
+Type: **Fraunces** (editorial display) + **Inter** (UI), loaded from Google Fonts
+with system fallbacks so nothing breaks offline.
 
-The app uses hash routes so every page works on GitHub Pages without server rewrites.
+## Structure
 
-## Main interactions
-
-- Care finder with service recommendations
-- Interactive daycare timeline
-- Expandable trust and safety details
-- Mobile navigation
-- Six-step inquiry form
-- Keyboard-friendly dialog with focus management
-- Reduced-motion support
-
-## Project structure
-
-```text
-index.html          Page metadata and structured data
-src/App.jsx         Routing and shared layout
-src/index.css       Design tokens and global styles
-src/components.css  Component and responsive styles
-src/components/     Homepage and shared components
-src/pages/          Service, about and contact pages
-src/data/           Business details and service content
-src/assets/         Optimized site photography
-docs/               Production build for GitHub Pages
+```
+index.html            SEO, Open Graph, LocalBusiness structured data, fonts
+src/
+  main.jsx            entry
+  App.jsx             hash router + layout
+  index.css           design tokens, reset, primitives
+  components.css      section & component styles
+  components/         Navbar, Hero, Services, BrandStory, Reviews, Footer, …
+  pages/              Home, Contact, ContactForm
+  context/            MockupContext + MockupModal (the "concept preview" notice)
+  hooks/              count-up, magnetic buttons, scroll, scroll-lock
+  data/               verified company info & content
+  assets/             web-optimised photography (WebP)
+design/source-photos/ original full-resolution uploads (not shipped in the build)
 ```
 
-## Content notes
+Highlights: masked hero headline reveal, arched "portal" photography, sticky
+scroll-storytelling, animated count-up stats, photo marquees, magnetic buttons,
+a custom desktop cursor, an animated full-screen mobile menu, and a giant
+typographic footer — all respecting `prefers-reduced-motion` and keyboard
+accessibility.
 
-The site uses the supplied 4.8 rating and 129-review count. It does not invent review quotes, pricing or opening hours. Current hours and public reviews are linked to their live listings.
+## Accuracy
+
+Only client-supplied facts are stated as such (address, phone, email, 4.8★ / 129
+Google reviews, established 2010, the three services, and the women-owned /
+Asian-owned / LGBTQ+-friendly attributes). Testimonials are shown as clearly
+labelled **preview slots** rather than invented quotes; prices, hours beyond
+"closes 7 PM", and unverified claims are intentionally omitted.
