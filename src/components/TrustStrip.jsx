@@ -1,28 +1,22 @@
-import { Star } from 'lucide-react'
 import Marquee from './ui/Marquee.jsx'
 
 const ITEMS = [
-  { text: '4.8 Google Rating', star: true },
-  { text: '129 Reviews' },
-  { text: 'Serving Brooklyn & Manhattan Since 2010' },
-  { text: 'Women-Owned' },
-  { text: 'Dog Daycare · Walking · Sitting' },
-  { text: 'Asian-Owned' },
-  { text: 'LGBTQ+ Friendly' },
+  'DOG DAYCARE',
+  'DOG WALKING',
+  'PET SITTING',
+  'BROOKLYN SINCE 2010',
+  '4.8 GOOGLE RATING',
+  '129 REVIEWS',
 ]
 
 export default function TrustStrip() {
   return (
-    <section className="trust" aria-label="Trust signals">
-      <Marquee duration={38} gap="0" ariaLabel="ProspectBArk! highlights">
-        {ITEMS.map((it, i) => (
-          <span className="trust__item" key={i}>
-            {it.star && <Star size={15} className="trust__star" aria-hidden="true" />}
-            <span className="trust__text">{it.text}</span>
-            <span className="trust__sep" aria-hidden="true">✦</span>
-          </span>
+    <div className="trust-strip" aria-label="ProspectBArk services and highlights">
+      <Marquee duration={30} gap="0">
+        {ITEMS.map((item) => (
+          <span className="trust-strip__item" key={item}>{item}<i>✦</i></span>
         ))}
       </Marquee>
-    </section>
+    </div>
   )
 }

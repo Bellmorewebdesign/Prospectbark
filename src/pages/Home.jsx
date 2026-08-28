@@ -1,29 +1,30 @@
 import Hero from '../components/Hero.jsx'
 import TrustStrip from '../components/TrustStrip.jsx'
-import Services from '../components/Services.jsx'
-import BrandStory from '../components/BrandStory.jsx'
-import WhyProspectBark from '../components/WhyProspectBark.jsx'
-import PhotoExperience from '../components/PhotoExperience.jsx'
+import CareFinder from '../components/CareFinder.jsx'
+import DayStory from '../components/DayStory.jsx'
+import ServiceRunway from '../components/ServiceRunway.jsx'
+import PeaceOfMind from '../components/PeaceOfMind.jsx'
 import Reviews from '../components/Reviews.jsx'
-import InstagramCarousel from '../components/InstagramCarousel.jsx'
-import About from '../components/About.jsx'
-import ContactCTA from '../components/ContactCTA.jsx'
-import FAQ from '../components/FAQ.jsx'
+import PackWall from '../components/PackWall.jsx'
+import BrooklynRoots from '../components/BrooklynRoots.jsx'
+import FinalInvite from '../components/FinalInvite.jsx'
 
-export default function Home({ onExplore, onContact, onGetStarted }) {
+export default function Home({ onNav, onGetStarted }) {
   return (
     <main id="main">
-      <Hero onExplore={onExplore} onContact={onContact} />
+      <Hero
+        onFindCare={() => onNav({ target: 'care-finder' })}
+        onMeet={() => onNav({ route: '/about' })}
+      />
       <TrustStrip />
-      <Services />
-      <BrandStory />
-      <WhyProspectBark onContact={onContact} />
-      <PhotoExperience />
+      <CareFinder onNav={onNav} onGetStarted={onGetStarted} />
+      <DayStory />
+      <ServiceRunway onNav={onNav} onGetStarted={onGetStarted} />
+      <PeaceOfMind onGetStarted={onGetStarted} />
       <Reviews />
-      <InstagramCarousel />
-      <About onContact={onContact} />
-      <FAQ onContact={onContact} />
-      <ContactCTA onContact={onContact} />
+      <PackWall />
+      <BrooklynRoots />
+      <FinalInvite onGetStarted={onGetStarted} />
     </main>
   )
 }
