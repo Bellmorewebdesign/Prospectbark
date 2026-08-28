@@ -7,6 +7,7 @@ import PeaceOfMind from '../components/PeaceOfMind.jsx'
 import Reviews from '../components/Reviews.jsx'
 import PackWall from '../components/PackWall.jsx'
 import BrooklynRoots from '../components/BrooklynRoots.jsx'
+import InstagramCarousel from '../components/InstagramCarousel.jsx'
 import FinalInvite from '../components/FinalInvite.jsx'
 
 export default function Home({ onNav, onGetStarted }) {
@@ -24,6 +25,7 @@ export default function Home({ onNav, onGetStarted }) {
       <Reviews />
       <PackWall />
       <BrooklynRoots />
+      <InstagramCarousel />
       <FinalInvite onGetStarted={onGetStarted} />
     </main>
   )

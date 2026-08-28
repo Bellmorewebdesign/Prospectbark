@@ -36,7 +36,7 @@ export default function Hero({ onFindCare, onMeet }) {
 
       <div className="shell home-hero__inner">
         <motion.div className="home-hero__meta" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-          <span>Brooklyn pet care</span>
+          <span>Brooklyn &amp; Manhattan pet care</span>
           <span>Since 2010</span>
         </motion.div>
 

@@ -6,7 +6,7 @@ export default function ServiceRunway({ onNav, onGetStarted }) {
   return (
     <section className="service-runway section" id="services" aria-labelledby="service-runway-title">
       <div className="shell service-runway__head">
-        <p className="kicker">Care, three ways</p>
+        <p className="kicker">Care, four ways</p>
         <h2 id="service-runway-title">The right plan<br />for the day<br /><em>ahead.</em></h2>
       </div>
       <div className="service-runway__list">

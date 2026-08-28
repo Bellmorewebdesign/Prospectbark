@@ -11,7 +11,7 @@ export default function AboutPage({ onGetStarted }) {
         <div className="shell about-hero__grid">
           <div><p className="kicker kicker--light">Our story</p><h1>Brooklyn<br />pets have<br />known us<br /><em>a while.</em></h1></div>
           <div className="about-hero__image"><img src={groupImg} alt="A group of ProspectBArk daycare dogs" /><span>ProspectBArk regulars</span></div>
-          <p className="about-hero__intro">ProspectBArk opened in 2010 and has cared for Brooklyn pets ever since. The job is simple to describe: show up, pay attention and treat every animal like an individual.</p>
+          <p className="about-hero__intro">ProspectBArk opened in 2010 and has cared for Brooklyn and Manhattan pets ever since. The job is simple to describe: show up, pay attention and treat every animal like an individual.</p>
         </div>
       </section>
 

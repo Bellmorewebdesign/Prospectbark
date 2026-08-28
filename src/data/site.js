@@ -36,6 +36,7 @@ export const NAV_LINKS = [
   { label: 'Daycare', route: '/daycare' },
   { label: 'Walking', route: '/walking' },
   { label: 'Pet Sitting', route: '/pet-sitting' },
+  { label: 'Vacation Care', route: '/vacation-care' },
   { label: 'About', route: '/about' },
   { label: 'Reviews', target: 'reviews' },
   { label: 'Contact', route: '/contact' },

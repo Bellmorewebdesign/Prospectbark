@@ -27,6 +27,12 @@ const PAGE_COPY = {
     deck: 'Dogs and cats get to keep the place, the smells and the routine they already know.',
     facts: ['Care in their own home', 'Dogs and cats welcome', 'Bonded and insured company'],
   },
+  vacation: {
+    eyebrow: 'Vacation care',
+    title: ['GO AWAY.', 'THEY WILL', 'BE JUST', 'FINE.'],
+    deck: 'Care that covers the whole trip, so the only thing your pet misses is you.',
+    facts: ['Care while you travel', 'Dogs and cats welcome', 'Bonded and insured company'],
+  },
 }
 
 export default function ServicePage({ service, onGetStarted, onFindCare }) {
