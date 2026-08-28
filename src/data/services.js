@@ -4,6 +4,7 @@ import sittingImg from '../assets/kittycat.webp'
 import birthdayImg from '../assets/birthday_dogo.webp'
 import huskyImg from '../assets/husky.webp'
 import facilityImg from '../assets/authentic/daycare-play.webp'
+import facilityCareImg from '../assets/authentic/facility-care.webp'
 
 export const SERVICES = [
   {
@@ -44,6 +45,19 @@ export const SERVICES = [
     secondaryImage: birthdayImg,
     alt: 'A calm cat resting at home',
     tone: 'teal',
+  },
+  {
+    id: 'vacation',
+    route: '/vacation-care',
+    number: '04',
+    short: 'Vacation',
+    name: 'Vacation Care',
+    headline: 'You travel. They stay happy.',
+    intro: 'Care that covers the whole trip, so your pet keeps their routine while you are away.',
+    image: birthdayImg,
+    secondaryImage: facilityCareImg,
+    alt: 'A happy dog being looked after at ProspectBArk',
+    tone: 'ink',
   },
 ]
 

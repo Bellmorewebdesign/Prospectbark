@@ -34,7 +34,7 @@ export default function MobileMenu({ open, onClose, onNav, onGetStarted }) {
           data-cursor-dark
         >
           <div className="mmenu__top shell">
-            <span>Brooklyn pet care since 2010</span>
+            <span>Brooklyn &amp; Manhattan pet care since 2010</span>
             <button ref={closeRef} className="mmenu__close" onClick={onClose} aria-label="Close menu">
               <X size={20} /> Close
             </button>
