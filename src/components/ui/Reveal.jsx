@@ -10,6 +10,7 @@ export default function Reveal({
   duration = 0.7,
   once = true,
   amount = 0.35,
+  mask = false,
   className,
   style,
   ...rest
@@ -17,13 +18,19 @@ export default function Reveal({
   const reduce = useReducedMotion()
   const MotionTag = motion[as] || motion.div
 
-  const hidden = reduce ? { opacity: 0 } : { opacity: 0, y, x }
-  const shown = { opacity: 1, y: 0, x: 0 }
+  const hidden = reduce
+    ? { opacity: 0 }
+    : mask
+      ? { opacity: 0, clipPath: 'inset(0 0 100% 0)', scale: 1.025 }
+      : { opacity: 0, y, x }
+  const shown = mask
+    ? { opacity: 1, clipPath: 'inset(0 0 0% 0)', scale: 1 }
+    : { opacity: 1, y: 0, x: 0 }
 
   return (
     <MotionTag
       className={className}
-      style={style}
+      style={mask ? { overflow: 'hidden', ...style } : style}
       initial={hidden}
       whileInView={shown}
       viewport={{ once, amount }}

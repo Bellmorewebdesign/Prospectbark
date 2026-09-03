@@ -1,10 +1,12 @@
 import { ArrowUpRight, Clock3, MapPin } from 'lucide-react'
 import storefront from '../assets/authentic/storefront.webp'
 import { SITE } from '../data/site.js'
+import MotionOrnament from './ui/MotionOrnament.jsx'
 
 export default function BrooklynRoots() {
   return (
-    <section className="roots section" aria-labelledby="roots-title">
+    <section className="roots section" id="brooklyn-roots" aria-labelledby="roots-title">
+      <MotionOrnament tone="ink" />
       <div className="shell roots__grid">
         <div className="roots__copy">
           <p className="kicker">Brooklyn roots</p>

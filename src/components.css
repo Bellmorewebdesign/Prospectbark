@@ -24,6 +24,24 @@
 .mmenu__contact { display: flex; flex-wrap: wrap; gap: 0.9rem 1.2rem; margin-top: 1.2rem; }
 .mmenu__contact a { display: inline-flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.72); font-size: 0.78rem; }
 
+/* Wayan-inspired motion details, using ProspectBArk's existing brand system */
+.site-loader { position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center; overflow: hidden; background: var(--ink); color: var(--gold-light); }
+.site-loader__mark { display: flex; width: min(82vw, 360px); flex-direction: column; align-items: center; }
+.site-loader__mark img { width: auto; height: clamp(76px, 11vw, 108px); filter: brightness(0) invert(1); }
+.site-loader__line { width: 100%; height: auto; margin-top: 0.7rem; overflow: visible; }
+.site-loader__mark span { margin-top: 0.45rem; color: var(--white); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.18em; text-align: center; text-transform: uppercase; }
+
+.motion-ornament { display: block; width: min(320px, 48vw); height: auto; margin: 0 auto clamp(2.8rem, 5vw, 5.2rem); overflow: visible; color: var(--teal); }
+.motion-ornament--gold { color: var(--gold); }
+.motion-ornament--ink { color: var(--ink); }
+
+.section-rail { position: fixed; left: clamp(10px, 1.35vw, 24px); top: 50%; z-index: 215; display: flex; width: 32px; flex-direction: column; align-items: center; gap: 1.2rem; transform: translateY(-50%); color: var(--gold); }
+.section-rail__label { width: 140px; font-size: 0.6rem; font-weight: 900; letter-spacing: 0.16em; text-align: center; text-transform: uppercase; transform: rotate(-90deg); }
+.section-rail__dots { display: flex; flex-direction: column; align-items: center; gap: 0.65rem; margin-top: 2.8rem; }
+.section-rail__dots button { display: block; width: 7px; height: 7px; border: 1px solid currentColor; border-radius: 50%; background: var(--gold); transition: width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s, box-shadow 0.3s; }
+.section-rail__dots button:hover { width: 11px; height: 11px; }
+.section-rail__dots button.is-active { width: 16px; height: 16px; background: var(--teal); box-shadow: 0 0 0 4px rgba(245, 239, 223, 0.72); }
+
 /* Editorial home hero */
 .home-hero { position: relative; min-height: 100svh; overflow: hidden; color: var(--white); background: var(--ink); }
 .home-hero__backdrop { position: absolute; inset: -5% 0; }
@@ -400,6 +418,7 @@
 
 /* Responsive */
 @media (max-width: 1120px) {
+  .section-rail { display: none; }
   .nav__links { display: none; }
   .nav__cta { margin-left: auto; }
   .nav__burger { display: block; }

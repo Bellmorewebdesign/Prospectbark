@@ -18,7 +18,7 @@ export default function Hero({ onFindCare, onMeet }) {
   const portraitY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 48])
 
   return (
-    <section className="home-hero" ref={ref} aria-label="ProspectBArk introduction" data-cursor-dark>
+    <section className="home-hero" id="home" ref={ref} aria-label="ProspectBArk introduction" data-cursor-dark>
       <motion.div className="home-hero__backdrop" style={{ y: imageY }}>
         <motion.img
           src={heroImg}

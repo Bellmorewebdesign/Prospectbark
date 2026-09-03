@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import MotionOrnament from './ui/MotionOrnament.jsx'
 import { ArrowLeft, ArrowRight, Cat, Dog, RotateCcw } from 'lucide-react'
 
 const PLANS = [
@@ -48,6 +49,7 @@ export default function CareFinder({ onNav, onGetStarted }) {
 
   return (
     <section className="care-finder section" id="care-finder" aria-labelledby="care-finder-title">
+      <MotionOrnament />
       <div className="shell care-finder__shell">
         <div className="care-finder__intro">
           <p className="kicker">Find their perfect day</p>

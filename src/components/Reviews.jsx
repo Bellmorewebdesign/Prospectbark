@@ -1,11 +1,13 @@
 import { ArrowUpRight } from 'lucide-react'
 import { SITE } from '../data/site.js'
+import MotionOrnament from './ui/MotionOrnament.jsx'
 
 const THEMES = ['CARE THAT FEELS PERSONAL', 'PHOTOS AND VIDEOS', 'A CLEAN SPACE', 'HAPPY DOGS', 'YEARS OF TRUST']
 
 export default function Reviews() {
   return (
     <section className="review-story section" id="reviews" aria-labelledby="reviews-title">
+      <MotionOrnament />
       <div className="shell review-story__grid">
         <div className="review-story__score">
           <span>{SITE.rating.stars}</span>

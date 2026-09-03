@@ -4,6 +4,7 @@ import { MockupProvider } from './context/MockupContext.jsx'
 import { useHashRoute, scrollToSection } from './router/useHashRoute.js'
 import { SERVICE_BY_ROUTE } from './data/services.js'
 import Cursor from './components/Cursor.jsx'
+import SiteLoader from './components/SiteLoader.jsx'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import StickyActions from './components/StickyActions.jsx'
@@ -61,16 +62,17 @@ export default function App() {
 
   return (
     <MockupProvider>
+      <SiteLoader />
       <Cursor />
       <a className="skip-link" href="#main">Skip to content</a>
       <Navbar path={path} onNav={handleNav} onGetStarted={() => navigate('/contact')} />
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={SERVICE_BY_ROUTE[path]?.id || path}
-          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
-          transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: reduce ? 0.16 : 0.52, ease: 'easeInOut' }}
         >
           {page}
         </motion.div>

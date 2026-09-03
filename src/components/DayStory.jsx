@@ -20,7 +20,7 @@ export default function DayStory() {
   const moment = MOMENTS[active]
 
   return (
-    <section className="day-story section" aria-labelledby="day-story-title" data-cursor-dark>
+    <section className="day-story section" id="day-story" aria-labelledby="day-story-title" data-cursor-dark>
       <div className="shell day-story__heading">
         <p className="kicker kicker--light">A day at ProspectBArk</p>
         <h2 id="day-story-title">Wish you<br />could <em>peek in?</em></h2>

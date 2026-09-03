@@ -9,10 +9,12 @@ import PackWall from '../components/PackWall.jsx'
 import BrooklynRoots from '../components/BrooklynRoots.jsx'
 import InstagramCarousel from '../components/InstagramCarousel.jsx'
 import FinalInvite from '../components/FinalInvite.jsx'
+import SectionRail from '../components/SectionRail.jsx'
 
 export default function Home({ onNav, onGetStarted }) {
   return (
     <main id="main">
+      <SectionRail />
       <Hero
         onFindCare={() => onNav({ target: 'care-finder' })}
         onMeet={() => onNav({ route: '/about' })}
