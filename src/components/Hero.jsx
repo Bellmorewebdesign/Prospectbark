@@ -2,6 +2,8 @@ import { useRef } from 'react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDown, ArrowRight, Phone } from 'lucide-react'
 import heroImg from '../assets/group_of-dogs.webp'
+import dogImg from '../assets/happy_dawg.webp'
+import birthdayImg from '../assets/birthday_dogo.webp'
 import { SITE } from '../data/site.js'
 import MagneticButton from './ui/MagneticButton.jsx'
 
@@ -13,6 +15,7 @@ export default function Hero({ onFindCare, onMeet }) {
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const titleY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 92])
   const imageY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -70])
+  const portraitY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 48])
 
   return (
     <section className="home-hero" ref={ref} aria-label="ProspectBArk introduction" data-cursor-dark>
@@ -29,6 +32,7 @@ export default function Hero({ onFindCare, onMeet }) {
         />
       </motion.div>
       <div className="home-hero__shade" aria-hidden="true" />
+      <div className="home-hero__brandtype" aria-hidden="true">PROSPECT BARK</div>
 
       <div className="shell home-hero__inner">
         <motion.div className="home-hero__meta" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
@@ -49,6 +53,27 @@ export default function Hero({ onFindCare, onMeet }) {
             </span>
           ))}
         </motion.h1>
+
+        <motion.div
+          className="home-hero__portrait"
+          style={{ y: portraitY }}
+          initial={reduce ? { opacity: 1 } : { opacity: 0, rotate: 4, x: 36 }}
+          animate={{ opacity: 1, rotate: -2, x: 0 }}
+          transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <img src={dogImg} alt="A happy ProspectBArk dog outside in Brooklyn" width="1142" height="1193" />
+          <span>Good day, confirmed.</span>
+        </motion.div>
+
+        <motion.div
+          className="home-hero__postcard"
+          initial={reduce ? { opacity: 1 } : { opacity: 0, rotate: -8, y: 22 }}
+          animate={{ opacity: 1, rotate: 4, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.52, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <img src={birthdayImg} alt="A dog celebrating a birthday at daycare" width="1500" height="1088" />
+          <strong>The clubhouse</strong>
+        </motion.div>
 
         <motion.div className="home-hero__footer" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65 }}>
           <div className="home-hero__actions">
