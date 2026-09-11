@@ -22,7 +22,7 @@ export default function DayStory() {
   return (
     <section className="day-story section" id="day-story" aria-labelledby="day-story-title" data-cursor-dark>
       <div className="shell day-story__heading">
-        <p className="kicker kicker--light">A day at ProspectBArk</p>
+        <p className="kicker kicker--light">A day at <span className="brand">ProspectBArk</span></p>
         <h2 id="day-story-title">Wish you<br />could <em>peek in?</em></h2>
         <p>We know leaving them is the hard part.</p>
       </div>

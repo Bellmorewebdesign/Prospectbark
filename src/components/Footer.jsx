@@ -12,7 +12,7 @@ export default function Footer({ onNav }) {
 
         <div className="footer__grid">
           <div className="footer__address">
-            <strong>ProspectBArk!</strong>
+            <strong className="brand">ProspectBArk!</strong>
             <a href={SITE.mapsHref} target="_blank" rel="noreferrer"><MapPin size={16} /> {SITE.address.full}</a>
             <a href={SITE.emailHref}><Mail size={16} /> {SITE.email}</a>
             <a href={SITE.phoneHref}><Phone size={16} /> {SITE.phone}</a>

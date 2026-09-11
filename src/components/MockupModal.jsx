@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { CalendarCheck, Sparkles, PawPrint, Check, X } from 'lucide-react'
 import { useLockBodyScroll } from '../hooks/useLockBodyScroll.js'
+import brandName from './ui/brandName.jsx'
 
 const ICONS = {
   calendar: CalendarCheck,
@@ -103,7 +104,7 @@ export default function MockupModal({ payload, onClose }) {
               {payload?.title}
             </h3>
             <p id="mockup-body" className="mockup-body">
-              {payload?.body}
+              {brandName(payload?.body)}
             </p>
 
             <button className="btn btn--block" onClick={onClose}>
