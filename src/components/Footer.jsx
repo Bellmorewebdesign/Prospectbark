@@ -6,7 +6,7 @@ export default function Footer({ onNav }) {
     <footer className="footer" data-cursor-dark>
       <div className="shell">
         <div className="footer__lead">
-          <p>Brooklyn &amp; Manhattan<br />pet care. Here since 2010.</p>
+          <p>NYC premium pet<br />care. Here since 2010.</p>
           <a href={SITE.phoneHref}>{SITE.phone} <ArrowUpRight size={18} /></a>
         </div>
 

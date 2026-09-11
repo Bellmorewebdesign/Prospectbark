@@ -24,12 +24,92 @@
 .mmenu__contact { display: flex; flex-wrap: wrap; gap: 0.9rem 1.2rem; margin-top: 1.2rem; }
 .mmenu__contact a { display: inline-flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.72); font-size: 0.78rem; }
 
+/* --- Opening sequence -----------------------------------------------------
+   The logo is the full-colour lockup on paper, assembled from three kinds of
+   layer (mark / stars / tagline) that are absolutely positioned by percentage
+   inside one aspect-ratio box. Each layer gets its own entrance so the stars
+   can twinkle independently of the mark. All delays are set inline from
+   SiteLoader.jsx, so the pacing lives in one place in the JS. */
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 50% 44%, var(--white) 0%, var(--paper) 46%, var(--cream) 100%);
+}
+.site-loader__logo { position: relative; width: min(86vw, 780px); }
+.site-loader__logo > * { position: absolute; }
+/* Every layer sits on its first keyframe until the artwork has loaded. */
+.site-loader__logo > * { animation-play-state: paused; }
+.site-loader__logo.is-ready > * { animation-play-state: running; }
+
+.site-loader__glow {
+  inset: -16% -10%;
+  background: radial-gradient(52% 48% at 50% 42%, rgba(240, 201, 120, 0.4), rgba(240, 201, 120, 0) 70%);
+  animation: loader-glow 2.6s ease-out 0.2s both;
+}
+.site-loader__mark {
+  height: auto;
+  animation: loader-mark-in 1.15s var(--ease) both;
+}
+.site-loader__shine {
+  background: linear-gradient(100deg, transparent 42%, rgba(255, 255, 255, 0.95) 50%, transparent 58%);
+  background-size: 260% 100%;
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  opacity: 0;
+  mix-blend-mode: overlay;
+  animation: loader-shine 1.25s ease-in-out both;
+}
+.site-loader__star {
+  height: auto;
+  transform-origin: 50% 50%;
+  animation:
+    loader-star-pop 0.85s cubic-bezier(0.22, 1.4, 0.36, 1) var(--pop-delay) both,
+    loader-star-twinkle var(--twinkle-time) ease-in-out var(--twinkle-delay) infinite;
+}
+.site-loader__tagline {
+  clip-path: inset(0 100% 0 0);
+  animation: loader-wipe 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.site-loader__tagline img { width: 100%; height: auto; }
+
+@keyframes loader-glow { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: none; } }
+@keyframes loader-mark-in {
+  from { opacity: 0; transform: scale(0.94) translateY(2.2%); filter: blur(10px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes loader-shine {
+  0% { opacity: 0; background-position: -60% 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; background-position: 160% 0; }
+}
+@keyframes loader-star-pop {
+  0% { opacity: 0; transform: scale(0.15) rotate(-70deg); filter: drop-shadow(0 0 0 rgba(240, 201, 120, 0)); }
+  60% { opacity: 1; transform: scale(1.3) rotate(6deg); filter: drop-shadow(0 0 16px rgba(240, 201, 120, 0.95)); }
+  100% { opacity: 1; transform: none; filter: drop-shadow(0 0 3px rgba(214, 155, 63, 0.35)); }
+}
+@keyframes loader-star-twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 3px rgba(214, 155, 63, 0.35)); }
+  50% { opacity: 0.68; transform: scale(1.14); filter: drop-shadow(0 0 13px rgba(240, 201, 120, 0.9)); }
+}
+@keyframes loader-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+
+/* No motion: show the finished lockup, skip every entrance. */
+.site-loader__logo.is-static > * { animation: none; opacity: 1; clip-path: none; filter: none; transform: none; }
+.site-loader__logo.is-static .site-loader__shine { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .site-loader__logo > * { animation: none; opacity: 1; clip-path: none; filter: none; transform: none; }
+  .site-loader__shine { display: none; }
+}
+
 /* Wayan-inspired motion details, using ProspectBArk's existing brand system */
-.site-loader { position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center; overflow: hidden; background: var(--ink); color: var(--gold-light); }
-.site-loader__mark { display: flex; width: min(82vw, 360px); flex-direction: column; align-items: center; }
-.site-loader__mark img { width: auto; height: clamp(76px, 11vw, 108px); filter: brightness(0) invert(1); }
-.site-loader__line { width: 100%; height: auto; margin-top: 0.7rem; overflow: visible; }
-.site-loader__mark span { margin-top: 0.45rem; color: var(--white); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.18em; text-align: center; text-transform: uppercase; }
 
 .motion-ornament { display: block; width: min(320px, 48vw); height: auto; margin: 0 auto clamp(2.8rem, 5vw, 5.2rem); overflow: visible; color: var(--teal); }
 .motion-ornament--gold { color: var(--gold); }
