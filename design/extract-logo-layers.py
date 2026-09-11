@@ -4,7 +4,8 @@ The three PNGs at the repo root (logo_opening_screen.png / "stars_opening
 screen.png" / tagline.png) share one 6912x3456 canvas, so the layers line up
 exactly. This script turns them into the pieces the site loader animates:
 
-    src/assets/brand/logo-mark.webp     the lockup with the stars removed
+    public/brand/logo-mark.webp         the lockup with the stars removed
+                                        (in public/ so index.html can preload it)
     src/assets/brand/logo-tagline.webp  DOG WALKS - DAYCARE - BATHS - PET SITS
     src/assets/brand/star-NN.webp       every star cut out on its own
     src/assets/brand/manifest.json      each piece's position, as a percentage
@@ -23,7 +24,9 @@ import json, os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'src/assets/brand')
+MARK_OUT = os.path.join(ROOT, 'public/brand')
 os.makedirs(OUT, exist_ok=True)
+os.makedirs(MARK_OUT, exist_ok=True)
 
 full  = Image.open(os.path.join(ROOT, 'logo_opening_screen.png')).convert('RGBA')
 stars = Image.open(os.path.join(ROOT, 'stars_opening screen.png')).convert('RGBA')
@@ -50,9 +53,9 @@ mb = mark_img.getchannel('A').getbbox()
 mc = mark_img.crop(mb)
 target_w = 1240
 mc = mc.resize((target_w, round(mc.height*target_w/mc.width)), Image.LANCZOS)
-mc.save(os.path.join(OUT, 'logo-mark.webp'), 'WEBP', quality=92, method=6)
+mc.save(os.path.join(MARK_OUT, 'logo-mark.webp'), 'WEBP', quality=92, method=6)
 manifest['mark'] = pct(mb[0], mb[1], mb[2]-mb[0], mb[3]-mb[1])
-print('mark', mc.size, os.path.getsize(os.path.join(OUT,'logo-mark.webp')))
+print('mark', mc.size, os.path.getsize(os.path.join(MARK_OUT, 'logo-mark.webp')))
 
 # ---------- 2. tagline ----------
 tag_img = Image.fromarray(t.astype(np.uint8), 'RGBA')
