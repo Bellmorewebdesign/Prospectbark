@@ -5,12 +5,12 @@ import { LOGO_MARK, LOGO_RATIO, LOGO_STARS, LOGO_TAGLINE } from '../data/brandLo
 // Opening sequence, in seconds. Everything below reads from these so the
 // pacing can be retuned in one place.
 const T = {
-  markIn: 0.15, // the lockup fades and settles into place
-  shine: 1.0, // a gold sweep travels across the lockup
-  firstStar: 0.45, // stars start popping in, biggest first
-  starStep: 0.065, // gap between each star
-  tagline: 1.45, // tagline wipes in left to right
-  hold: 2.8, // full lockup sits still for a beat
+  markIn: 0.1, // the lockup fades and settles into place
+  shine: 0.75, // a gold sweep travels across the lockup
+  firstStar: 0.4, // stars start popping in, biggest first
+  starStep: 0.05, // gap between each star
+  tagline: 1.35, // tagline wipes in left to right
+  hold: 3.0, // full lockup sits still for a beat
   swipe: 0.8, // then the whole screen swipes up
 }
 

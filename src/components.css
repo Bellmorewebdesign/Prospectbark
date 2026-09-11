@@ -37,10 +37,9 @@
   display: grid;
   place-items: center;
   overflow: hidden;
-  background:
-    radial-gradient(120% 90% at 50% 44%, var(--white) 0%, var(--paper) 46%, var(--cream) 100%);
+  background: radial-gradient(115% 85% at 50% 44%, var(--ink-2) 0%, var(--ink) 62%, #0a1a14 100%);
 }
-.site-loader__logo { position: relative; width: min(86vw, 780px); }
+.site-loader__logo { position: relative; width: min(78vw, 520px); }
 .site-loader__logo > * { position: absolute; }
 /* Every layer sits on its first keyframe until the artwork has loaded. */
 .site-loader__logo > * { animation-play-state: paused; }
@@ -48,7 +47,7 @@
 
 .site-loader__glow {
   inset: -16% -10%;
-  background: radial-gradient(52% 48% at 50% 42%, rgba(240, 201, 120, 0.4), rgba(240, 201, 120, 0) 70%);
+  background: radial-gradient(52% 48% at 50% 42%, rgba(240, 201, 120, 0.22), rgba(240, 201, 120, 0) 70%);
   animation: loader-glow 2.6s ease-out 0.2s both;
 }
 .site-loader__mark {
@@ -56,14 +55,14 @@
   animation: loader-mark-in 1.15s var(--ease) both;
 }
 .site-loader__shine {
-  background: linear-gradient(100deg, transparent 42%, rgba(255, 255, 255, 0.95) 50%, transparent 58%);
+  background: linear-gradient(100deg, transparent 43%, rgba(255, 250, 240, 0.34) 50%, transparent 57%);
   background-size: 260% 100%;
   mask-repeat: no-repeat;
   mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
   opacity: 0;
-  mix-blend-mode: overlay;
+  mix-blend-mode: screen;
   animation: loader-shine 1.25s ease-in-out both;
 }
 .site-loader__star {
@@ -74,11 +73,10 @@
     loader-star-twinkle var(--twinkle-time) ease-in-out var(--twinkle-delay) infinite;
 }
 .site-loader__tagline {
-  clip-path: inset(0 100% 0 0);
-  animation: loader-wipe 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+  clip-path: inset(-140% 100% -140% 0);
+  animation: loader-wipe 1.35s cubic-bezier(0.33, 0.4, 0.2, 1) both;
 }
 .site-loader__tagline img { width: 100%; height: auto; }
-
 @keyframes loader-glow { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: none; } }
 @keyframes loader-mark-in {
   from { opacity: 0; transform: scale(0.94) translateY(2.2%); filter: blur(10px); }
@@ -99,7 +97,7 @@
   0%, 100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 3px rgba(214, 155, 63, 0.35)); }
   50% { opacity: 0.68; transform: scale(1.14); filter: drop-shadow(0 0 13px rgba(240, 201, 120, 0.9)); }
 }
-@keyframes loader-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes loader-wipe { from { clip-path: inset(-140% 100% -140% 0); } to { clip-path: inset(-140% 0 -140% 0); } }
 
 /* No motion: show the finished lockup, skip every entrance. */
 .site-loader__logo.is-static > * { animation: none; opacity: 1; clip-path: none; filter: none; transform: none; }
