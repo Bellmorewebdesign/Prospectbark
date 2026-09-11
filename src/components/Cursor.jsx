@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-// Custom cursor: an instant gold dot + a lagging ring that swells over
+// Custom cursor: an instant gold paw print + a lagging ring that swells over
 // interactive targets. Desktop / fine-pointer only, and never under
 // prefers-reduced-motion.
 export default function Cursor() {
@@ -45,18 +45,18 @@ export default function Cursor() {
     const onOver = (e) => {
       const t = e.target
       if (t.closest && t.closest(interactiveSel)) {
-        ring.parentElement.classList.add('is-hover')
-        ring.parentElement.classList.toggle('is-hover-dark', Boolean(t.closest('[data-cursor-dark]')))
+        ring.classList.add('is-hover')
+        ring.classList.toggle('is-hover-dark', Boolean(t.closest('[data-cursor-dark]')))
       }
     }
     const onOut = (e) => {
       const t = e.target
       if (t.closest && t.closest(interactiveSel)) {
-        ring.parentElement.classList.remove('is-hover')
+        ring.classList.remove('is-hover')
       }
     }
-    const onDown = () => ring.parentElement.classList.add('is-down')
-    const onUp = () => ring.parentElement.classList.remove('is-down')
+    const onDown = () => ring.classList.add('is-down')
+    const onUp = () => ring.classList.remove('is-down')
     const onLeave = () => {
       visible = false
       ring.style.opacity = '0'
@@ -88,7 +88,15 @@ export default function Cursor() {
       <div className="cursor" ref={ringRef} style={{ opacity: 0 }}>
         <div className="cursor__ring" />
       </div>
-      <div className="cursor__dot" ref={dotRef} style={{ opacity: 0 }} />
+      <div className="cursor__paw" ref={dotRef} style={{ opacity: 0 }}>
+        <svg viewBox="0 0 24 24" role="presentation" focusable="false">
+          <ellipse cx="12" cy="16.6" rx="5.5" ry="4.5" />
+          <ellipse cx="5.2" cy="10.6" rx="2.4" ry="3" transform="rotate(-20 5.2 10.6)" />
+          <ellipse cx="9.6" cy="6.6" rx="2.3" ry="3.1" transform="rotate(-8 9.6 6.6)" />
+          <ellipse cx="14.4" cy="6.6" rx="2.3" ry="3.1" transform="rotate(8 14.4 6.6)" />
+          <ellipse cx="18.8" cy="10.6" rx="2.4" ry="3" transform="rotate(20 18.8 10.6)" />
+        </svg>
+      </div>
     </div>
   )
 }

@@ -122,13 +122,17 @@ em { color: var(--gold); font-weight: 450; }
 
 .cursor { position: fixed; inset: 0 auto auto 0; z-index: 9999; pointer-events: none; }
 .cursor__ring { width: 40px; height: 40px; margin: -20px 0 0 -20px; border: 1px solid var(--gold); border-radius: 50%; transition: width 0.25s var(--ease), height 0.25s var(--ease), margin 0.25s var(--ease), background 0.25s; }
-.cursor__dot { position: fixed; inset: 0 auto auto 0; z-index: 9999; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; border-radius: 50%; background: var(--gold); pointer-events: none; }
+.cursor__paw { position: fixed; inset: 0 auto auto 0; z-index: 9999; width: 18px; height: 18px; margin: -9px 0 0 -9px; pointer-events: none; }
+/* Gold fill with an ink keyline, drawn behind the fill, so the paw stays
+   readable on cream, on photography and on the gold buttons alike. */
+.cursor__paw svg { width: 100%; height: 100%; overflow: visible; fill: var(--gold); stroke: var(--ink); stroke-width: 2.4; paint-order: stroke fill; transition: transform 0.2s var(--ease); }
 .cursor.is-hover .cursor__ring { width: 66px; height: 66px; margin: -33px 0 0 -33px; background: rgba(214, 155, 63, 0.14); }
 .cursor.is-down .cursor__ring { width: 28px; height: 28px; margin: -14px 0 0 -14px; }
 body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button, body.has-custom-cursor input, body.has-custom-cursor textarea { cursor: none; }
+.cursor.is-down ~ .cursor__paw svg { transform: scale(0.82); }
 
 @media (hover: none), (pointer: coarse) {
-  .cursor, .cursor__dot { display: none; }
+  .cursor, .cursor__paw { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

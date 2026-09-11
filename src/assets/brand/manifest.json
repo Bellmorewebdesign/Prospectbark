@@ -1,0 +1,156 @@
+{
+  "box": {
+    "w": 3049,
+    "h": 2076
+  },
+  "mark": {
+    "left": 11.7744,
+    "top": 0.0,
+    "width": 79.1079,
+    "height": 90.7033
+  },
+  "tagline": {
+    "left": 13.0863,
+    "top": 97.1098,
+    "width": 75.0082,
+    "height": 2.8902
+  },
+  "stars": [
+    {
+      "left": 5.6412,
+      "top": 22.3507,
+      "width": 4.1325,
+      "height": 6.262,
+      "src": "star-05.webp",
+      "area": 7342
+    },
+    {
+      "left": 96.2283,
+      "top": 37.3796,
+      "width": 3.7061,
+      "height": 5.684,
+      "src": "star-09.webp",
+      "area": 6047
+    },
+    {
+      "left": 16.038,
+      "top": 6.7919,
+      "width": 3.6405,
+      "height": 5.2023,
+      "src": "star-03.webp",
+      "area": 5394
+    },
+    {
+      "left": 81.2398,
+      "top": 40.6551,
+      "width": 3.3126,
+      "height": 5.0096,
+      "src": "star-10.webp",
+      "area": 4757
+    },
+    {
+      "left": 91.1118,
+      "top": 58.4297,
+      "width": 2.6238,
+      "height": 3.5645,
+      "src": "star-15.webp",
+      "area": 3811
+    },
+    {
+      "left": 18.957,
+      "top": 43.2081,
+      "width": 2.4598,
+      "height": 3.5164,
+      "src": "star-12.webp",
+      "area": 3434
+    },
+    {
+      "left": 0.0328,
+      "top": 65.5106,
+      "width": 2.7878,
+      "height": 4.2389,
+      "src": "star-16.webp",
+      "area": 3400
+    },
+    {
+      "left": 12.0367,
+      "top": 2.842,
+      "width": 2.3614,
+      "height": 3.2274,
+      "src": "star-01.webp",
+      "area": 3095
+    },
+    {
+      "left": 18.7275,
+      "top": 31.3584,
+      "width": 2.6238,
+      "height": 3.9981,
+      "src": "star-08.webp",
+      "area": 3010
+    },
+    {
+      "left": 82.6173,
+      "top": 5.6358,
+      "width": 2.3614,
+      "height": 3.6127,
+      "src": "star-02.webp",
+      "area": 2462
+    },
+    {
+      "left": 88.6192,
+      "top": 27.7938,
+      "width": 1.8695,
+      "height": 2.9383,
+      "src": "star-07.webp",
+      "area": 2288
+    },
+    {
+      "left": 6.4939,
+      "top": 41.7148,
+      "width": 1.4103,
+      "height": 2.1195,
+      "src": "star-11.webp",
+      "area": 1249
+    },
+    {
+      "left": 7.6091,
+      "top": 57.5145,
+      "width": 1.4431,
+      "height": 2.2158,
+      "src": "star-14.webp",
+      "area": 1247
+    },
+    {
+      "left": 21.876,
+      "top": 24.2293,
+      "width": 1.4431,
+      "height": 2.1676,
+      "src": "star-06.webp",
+      "area": 1245
+    },
+    {
+      "left": 97.8682,
+      "top": 69.9904,
+      "width": 1.3447,
+      "height": 2.1195,
+      "src": "star-17.webp",
+      "area": 1155
+    },
+    {
+      "left": 95.6707,
+      "top": 18.0154,
+      "width": 1.2791,
+      "height": 1.9268,
+      "src": "star-04.webp",
+      "area": 1004
+    },
+    {
+      "left": 89.2752,
+      "top": 45.9056,
+      "width": 1.2791,
+      "height": 1.9268,
+      "src": "star-13.webp",
+      "area": 995
+    }
+  ]
+}
