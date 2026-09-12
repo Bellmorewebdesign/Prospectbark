@@ -80,7 +80,7 @@ export default function Hero({ onFindCare, onMeet }) {
             <MagneticButton className="button button--gold" onClick={onFindCare}>
               Find the right care <ArrowRight size={18} />
             </MagneticButton>
-            <button className="text-link text-link--light" onClick={onMeet}>Meet ProspectBArk</button>
+            <button className="text-link text-link--light" onClick={onMeet}>Meet <span className="brand">ProspectBArk</span></button>
           </div>
           <a className="home-hero__call" href={SITE.phoneHref}><Phone size={17} /> Call {SITE.phone}</a>
           <a className="home-hero__rating" href={SITE.rating.href} target="_blank" rel="noreferrer">
