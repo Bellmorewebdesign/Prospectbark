@@ -1,3 +1,13 @@
+/* 'Topaz New' by Alan Tinsley (1997), supplied as topaz_new.zip at the repo
+   root. Monospaced, ASCII 32-127 only, which covers the business name. */
+@font-face {
+  font-family: 'Topaz New';
+  src: url('./assets/fonts/Topaznew.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --ink: #10271f;
   --ink-2: #183a30;
@@ -67,6 +77,15 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 610; line-height
   font-family: var(--font-brand) !important;
   font-style: normal !important;
   letter-spacing: 0.012em;
+}
+
+/* Topaz is a pixel face, so it is reserved for display settings of the name:
+   headings and the footer wordmark. Inline mentions inside a paragraph keep
+   the Outfit treatment, which sits evenly in a Manrope line. Letter-spacing
+   resets because Topaz is monospaced and already carries its own rhythm. */
+h1 .brand, h2 .brand, h3 .brand, h4 .brand, .footer__address strong.brand {
+  font-family: 'Topaz New', var(--font-brand) !important;
+  letter-spacing: 0;
 }
 p { text-wrap: pretty; }
 em { color: var(--gold); font-weight: 450; }
