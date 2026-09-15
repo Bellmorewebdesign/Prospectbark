@@ -11,7 +11,7 @@ export default function Reviews() {
       <div className="shell review-story__grid">
         <div className="review-story__score">
           <span>{SITE.rating.stars}</span>
-          <div><strong>★★★★★</strong><small>Across {SITE.rating.reviews} Google reviews</small></div>
+          <div><strong>★★★★★</strong><small>Across {SITE.rating.reviews} reviews</small></div>
         </div>
         <div className="review-story__copy">
           <p className="kicker">What pet parents notice</p>

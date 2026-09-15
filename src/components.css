@@ -61,10 +61,10 @@
 .home-hero__postcard { position: absolute; z-index: 5; right: 1.5%; bottom: 14%; width: clamp(130px, 14vw, 220px); padding: 0.45rem 0.45rem 1.7rem; background: var(--gold); color: var(--ink); box-shadow: 12px 15px 32px rgba(0,0,0,0.28); }
 .home-hero__postcard img { width: 100%; aspect-ratio: 1.28; object-fit: cover; }
 .home-hero__postcard strong { position: absolute; left: 0.7rem; bottom: 0.3rem; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; }
-.home-hero__footer { display: grid; grid-template-columns: auto 1fr auto; align-items: end; gap: 1.4rem; margin-top: clamp(1.8rem, 5vh, 4rem); }
+.home-hero__footer { display: grid; grid-template-columns: auto 1fr; align-items: end; gap: 1.4rem; margin-top: clamp(1.8rem, 5vh, 4rem); }
 .home-hero__actions { display: flex; align-items: center; gap: 1.3rem; }
 .home-hero__call { align-self: center; display: inline-flex; align-items: center; gap: 0.45rem; margin-left: 1rem; font-size: 0.77rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
-.home-hero__rating { display: flex; align-items: center; gap: 0.8rem; padding-left: 1.2rem; border-left: 1px solid rgba(255,255,255,0.35); }
+.home-hero__rating { grid-column: 1 / -1; justify-self: start; display: flex; align-items: center; gap: 0.8rem; }
 .home-hero__rating > strong { font-family: var(--font-display); font-size: 2.6rem; line-height: 1; }
 .home-hero__rating span { color: var(--gold-light); font-size: 0.68rem; letter-spacing: 0.1em; }
 .home-hero__rating small { display: block; color: var(--white); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.04em; }

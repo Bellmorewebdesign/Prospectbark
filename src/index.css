@@ -120,15 +120,11 @@ em { color: var(--gold); font-weight: 450; }
 .marquee--reverse .marquee__track { animation-direction: reverse; }
 @keyframes marquee { to { transform: translateX(-100%); } }
 
-.cursor { position: fixed; inset: 0 auto auto 0; z-index: 9999; pointer-events: none; }
-.cursor__ring { width: 40px; height: 40px; margin: -20px 0 0 -20px; border: 1px solid var(--gold); border-radius: 50%; transition: width 0.25s var(--ease), height 0.25s var(--ease), margin 0.25s var(--ease), background 0.25s; }
 .cursor__dot { position: fixed; inset: 0 auto auto 0; z-index: 9999; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; border-radius: 50%; background: var(--gold); pointer-events: none; }
-.cursor.is-hover .cursor__ring { width: 66px; height: 66px; margin: -33px 0 0 -33px; background: rgba(214, 155, 63, 0.14); }
-.cursor.is-down .cursor__ring { width: 28px; height: 28px; margin: -14px 0 0 -14px; }
 body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button, body.has-custom-cursor input, body.has-custom-cursor textarea { cursor: none; }
 
 @media (hover: none), (pointer: coarse) {
-  .cursor, .cursor__dot { display: none; }
+  .cursor__dot { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

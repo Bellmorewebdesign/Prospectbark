@@ -16,9 +16,10 @@ export const SITE = {
   },
   mapsHref:
     'https://www.google.com/maps/search/?api=1&query=ProspectBArk%21%20578%205th%20Ave%20Brooklyn%20NY%2011215',
+  // Combined across all review platforms. Display the total only.
   rating: {
-    stars: 4.8,
-    reviews: 129,
+    stars: 4.9,
+    reviews: 312,
     href: 'https://www.google.com/search?q=ProspectBArk%21+578+5th+Ave+Brooklyn+NY+reviews',
   },
   social: {

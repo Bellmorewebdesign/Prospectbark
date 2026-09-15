@@ -1,4 +1,5 @@
 import Marquee from './ui/Marquee.jsx'
+import { SITE } from '../data/site.js'
 
 const ITEMS = [
   'DOG DAYCARE',
@@ -6,8 +7,8 @@ const ITEMS = [
   'PET SITTING',
   'VACATION CARE',
   'BROOKLYN & MANHATTAN SINCE 2010',
-  '4.8 GOOGLE RATING',
-  '129 REVIEWS',
+  `${SITE.rating.stars} STAR RATING`,
+  `${SITE.rating.reviews} REVIEWS`,
 ]
 
 export default function TrustStrip() {

@@ -85,7 +85,7 @@ export default function Hero({ onFindCare, onMeet }) {
           <a className="home-hero__call" href={SITE.phoneHref}><Phone size={17} /> Call {SITE.phone}</a>
           <a className="home-hero__rating" href={SITE.rating.href} target="_blank" rel="noreferrer">
             <strong>{SITE.rating.stars}</strong>
-            <span>★★★★★<small>{SITE.rating.reviews} Google reviews</small></span>
+            <span>★★★★★<small>{SITE.rating.reviews} reviews</small></span>
           </a>
         </motion.div>
       </div>
