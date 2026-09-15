@@ -14,6 +14,10 @@
   --white: #fffdf8;
   --font-display: 'Fraunces', Georgia, serif;
   --font-sans: 'Manrope', 'Inter', system-ui, sans-serif;
+  /* The logo wordmark is a light geometric sans in the Futura / Century Gothic
+     lineage. Outfit Light is the closest web match (measured letter-by-letter
+     against the logo artwork), so the business name is set in it everywhere. */
+  --font-brand: 'Outfit', 'Manrope', system-ui, sans-serif;
   --shell: 1440px;
   --gutter: clamp(20px, 4vw, 70px);
   --section: clamp(82px, 10vw, 164px);
@@ -50,7 +54,20 @@ button { padding: 0; border: 0; background: none; cursor: pointer; }
 a { color: inherit; text-decoration: none; }
 img, svg { display: block; max-width: 100%; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
-h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 610; line-height: 0.92; letter-spacing: -0.045em; text-wrap: balance; }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 610; line-height: 0.92; letter-spacing: -0.012em; text-wrap: balance; }
+
+/* The business name, set in the brand face wherever it appears as text. Outfit
+   runs a touch narrower than Manrope at the same size, so a hair of tracking
+   keeps an inline mention sitting evenly inside a Manrope paragraph.
+   !important because the name has to win in every context it lands in, and
+   plenty of existing rules (.about-hero__image span, .peace__questions button
+   strong, and so on) out-specify a bare class. Upright always: Outfit ships no
+   true italic, so an italic caption would otherwise fake-slant the wordmark. */
+.brand {
+  font-family: var(--font-brand) !important;
+  font-style: normal !important;
+  letter-spacing: 0.012em;
+}
 p { text-wrap: pretty; }
 em { color: var(--gold); font-weight: 450; }
 ::selection { background: var(--gold); color: var(--ink); }
@@ -71,6 +88,10 @@ em { color: var(--gold); font-weight: 450; }
   text-transform: uppercase;
 }
 .kicker::before { content: ''; width: 36px; height: 2px; background: currentColor; }
+/* .kicker is a flex row, so a nested .brand becomes its own flex item and picks
+   up the container's 0.75rem gap on both sides where a word space belongs.
+   Pull it back to roughly a space. */
+.kicker .brand { margin-inline: -0.35rem; }
 .kicker--light { color: var(--gold-light); }
 
 .button {
@@ -120,11 +141,15 @@ em { color: var(--gold); font-weight: 450; }
 .marquee--reverse .marquee__track { animation-direction: reverse; }
 @keyframes marquee { to { transform: translateX(-100%); } }
 
-.cursor__dot { position: fixed; inset: 0 auto auto 0; z-index: 9999; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; border-radius: 50%; background: var(--gold); pointer-events: none; }
+.cursor__paw { position: fixed; inset: 0 auto auto 0; z-index: 9999; width: 18px; height: 18px; margin: -9px 0 0 -9px; pointer-events: none; }
+/* Gold fill with an ink keyline, drawn behind the fill, so the paw stays
+   readable on cream, on photography and on the gold buttons alike. */
+.cursor__paw svg { width: 100%; height: 100%; overflow: visible; fill: var(--gold); stroke: var(--ink); stroke-width: 2.4; paint-order: stroke fill; transition: transform 0.2s var(--ease); }
 body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button, body.has-custom-cursor input, body.has-custom-cursor textarea { cursor: none; }
+.cursor__paw.is-down svg { transform: scale(0.82); }
 
 @media (hover: none), (pointer: coarse) {
-  .cursor__dot { display: none; }
+  .cursor__paw { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

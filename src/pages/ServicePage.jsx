@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Check, MapPin } from 'lucide-react'
+import brandName from '../components/ui/brandName.jsx'
 import groupImg from '../assets/group_of-dogs.webp'
 import birthdayImg from '../assets/birthday_dogo.webp'
 import catImg from '../assets/kittycat.webp'
@@ -43,17 +44,17 @@ export default function ServicePage({ service, onGetStarted, onFindCare }) {
         <img className="service-hero__image" src={service.image} alt={service.alt} />
         <div className="service-hero__shade" />
         <div className="shell service-hero__inner">
-          <p className="kicker kicker--light">{copy.eyebrow}</p>
+          <p className="kicker kicker--light">{brandName(copy.eyebrow)}</p>
           <h1>{copy.title.map((line, index) => <span className={index === copy.title.length - 1 ? 'is-accent' : ''} key={line}>{line}</span>)}</h1>
           <div className="service-hero__bottom">
-            <p>{copy.deck}</p>
+            <p>{brandName(copy.deck)}</p>
             <button className="button button--gold" onClick={onGetStarted}>Start an inquiry <ArrowRight size={18} /></button>
           </div>
         </div>
       </section>
 
       <div className="service-facts" aria-label={`${service.name} highlights`}>
-        <div className="shell">{copy.facts.map((fact) => <span key={fact}><Check size={16} /> {fact}</span>)}</div>
+        <div className="shell">{copy.facts.map((fact) => <span key={fact}><Check size={16} /> {brandName(fact)}</span>)}</div>
       </div>
 
       {service.id === 'daycare' ? <DaycareExperience onFindCare={onFindCare} /> : null}
@@ -67,7 +68,7 @@ export default function ServicePage({ service, onGetStarted, onFindCare }) {
             <h2>What you should<br /><em>know up front.</em></h2>
           </div>
           <div className="service-values__list">
-            <article><span>01</span><h3>Real people</h3><p>ProspectBArk has served Brooklyn pets since 2010. Current caregiver roles include paid training, industry certifications and field support.</p></article>
+            <article><span>01</span><h3>Real people</h3><p><span className="brand">ProspectBArk</span> has served Brooklyn pets since 2010. Current caregiver roles include paid training, industry certifications and field support.</p></article>
             <article><span>02</span><h3>Real accountability</h3><p>The company publicly identifies itself as bonded and insured, with pet first aid certification listed on its official profile.</p></article>
             <article><span>03</span><h3>Real communication</h3><p>Public daycare reviews often mention photos, videos and staff who pay attention. Those details matter when your pet is with someone else.</p></article>
           </div>

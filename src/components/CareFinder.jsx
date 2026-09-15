@@ -102,7 +102,7 @@ export default function CareFinder({ onNav, onGetStarted }) {
                 <p>Our read</p>
                 <h3>{result === 'daycare' ? 'Sounds like a daycare day.' : result === 'walking' ? 'A good walk could change the day.' : 'Pet sitting keeps home feeling like home.'}</h3>
                 <p className="care-result__note">
-                  This is a place to start. The ProspectBArk team can help you figure out what works best.
+                  This is a place to start. The <span className="brand">ProspectBArk</span> team can help you figure out what works best.
                 </p>
                 <div className="care-result__actions">
                   <button className="button button--cream" onClick={() => onNav({ route: service.route })}>{service.label} <ArrowRight size={17} /></button>

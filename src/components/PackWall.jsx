@@ -23,8 +23,8 @@ export default function PackWall() {
     <section className="pack-wall section" aria-labelledby="pack-title" data-cursor-dark>
       <div className="shell pack-wall__head">
         <div>
-          <p className="kicker kicker--light">The ProspectBArk pack</p>
-          <h2 id="pack-title">Who's a<br />ProspectBArk<br /><em>kid?</em></h2>
+          <p className="kicker kicker--light">The <span className="brand">ProspectBArk</span> pack</p>
+          <h2 id="pack-title">Who's a<br /><span className="brand">ProspectBArk</span><br /><em>kid?</em></h2>
         </div>
         <a href={SITE.social.daycare.href} target="_blank" rel="noreferrer"><Instagram size={18} /> Follow the daycare</a>
       </div>

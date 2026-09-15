@@ -6,7 +6,7 @@ const ITEMS = [
   'DOG WALKING',
   'PET SITTING',
   'VACATION CARE',
-  'BROOKLYN & MANHATTAN SINCE 2010',
+  'NYC PREMIUM PET CARE SINCE 2010',
   `${SITE.rating.stars} STAR RATING`,
   `${SITE.rating.reviews} REVIEWS`,
 ]

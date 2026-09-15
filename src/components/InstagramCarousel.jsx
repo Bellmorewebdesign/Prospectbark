@@ -107,11 +107,11 @@ export default function InstagramCarousel() {
       <div className="shell ig-strip__head">
         <div>
           <p className="kicker">On Instagram</p>
-          <h2 id="ig-strip-title">Life at<br /><em>ProspectBArk.</em></h2>
+          <h2 id="ig-strip-title">Life at<br /><em><span className="brand">ProspectBArk</span>.</em></h2>
         </div>
         <div className="ig-strip__actions">
           <a className="button button--ink" href={IG_ACCOUNT.href} target="_blank" rel="noreferrer">
-            <Instagram size={17} /> Follow ProspectBArk
+            <Instagram size={17} /> Follow <span className="brand">ProspectBArk</span>
           </a>
           <div className="ig-strip__arrows">
             <button type="button" onClick={() => nudge(-1)} aria-label="Show previous posts"><ArrowLeft size={18} /></button>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, BadgeCheck, BriefcaseBusiness, Camera, GraduationCap } from 'lucide-react'
+import brandName from './ui/brandName.jsx'
 
 const SCENARIOS = [
   {
@@ -61,10 +62,10 @@ export default function PeaceOfMind({ onGetStarted }) {
           <AnimatePresence mode="wait">
             <motion.div key={scenario.answer} initial={reduce ? { opacity: 0 } : { opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
               <Icon size={44} strokeWidth={1.3} />
-              <p>ProspectBArk's answer</p>
+              <p><span className="brand">ProspectBArk</span>'s answer</p>
               <h3>{scenario.answer}</h3>
-              <span>{scenario.body}</span>
-              <small>{scenario.source}</small>
+              <span>{brandName(scenario.body)}</span>
+              <small>{brandName(scenario.source)}</small>
             </motion.div>
           </AnimatePresence>
           <button className="button button--gold" onClick={onGetStarted}>Let's talk <ArrowRight size={17} /></button>
