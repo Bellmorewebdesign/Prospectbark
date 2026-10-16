@@ -28,7 +28,13 @@ export const SHARE_PREVIEWS = [
     id: 'current',
     image: 'og-image.jpg',
     alt: 'A husky looking up at the camera on an autumn path',
-    label: 'The image the site uses today',
+    label: 'The original husky image',
+  },
+  {
+    id: '17-years',
+    image: 'share-17-years.jpg',
+    alt: 'ProspectBArk! 17 Years logo with a beagle and an orange cat',
+    label: 'The 17 Years image the site uses today',
   },
   // { id: 'a', image: 'share/option-a.png', alt: '…', label: 'Client option A' },
 ]
