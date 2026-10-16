@@ -32,7 +32,7 @@ export default function Hero({ onFindCare, onMeet }) {
         />
       </motion.div>
       <div className="home-hero__shade" aria-hidden="true" />
-      <div className="home-hero__brandtype" aria-hidden="true">PROSPECT BARK</div>
+      <div className="home-hero__brandtype" aria-hidden="true"><span className="wordmark">PROSPECT</span> BARK</div>
 
       <div className="shell home-hero__inner">
         <motion.div className="home-hero__meta" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>

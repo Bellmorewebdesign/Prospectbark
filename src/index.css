@@ -34,11 +34,28 @@
      lineage. Outfit Light is the closest web match (measured letter-by-letter
      against the logo artwork), so the business name is set in it everywhere. */
   --font-brand: 'Outfit', 'Manrope', system-ui, sans-serif;
+  /* PROSPECT in the logo is set in Topaz Shaded (see design/BRAND-FONT.md).
+     Only used once the real font is confirmed present: see .has-wordmark-font. */
+  --font-wordmark: 'Topaz Shaded', var(--font-brand);
   --shell: 1440px;
   --gutter: clamp(20px, 4vw, 70px);
   --section: clamp(82px, 10vw, 164px);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Topaz Shaded, the client's wordmark face. Only local() sources for now: the
+   web-embedding licence is not confirmed, so the font file is not in this
+   public repository. Anyone with the client's Topaz Shaded.otf installed sees
+   the real wordmark; everyone else gets the current Outfit lettering, and no
+   request is ever made for a file that is not there.
+   Once the licence allows web embedding, add the converted file as
+   public/fonts/topaz-shaded.woff2 and append to src:
+     url('/fonts/topaz-shaded.woff2') format('woff2') */
+@font-face {
+  font-family: 'Topaz Shaded';
+  src: local('Topaz Shaded'), local('TopazShaded'), local('TopazShaded-Regular'), local('Topaz Shaded Regular');
+  font-display: swap;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -87,6 +104,18 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 610; line-height
   font-family: var(--font-brand) !important;
   font-style: normal !important;
   letter-spacing: 0.012em;
+}
+/* PROSPECT set in the logo's own face. The class is added by brandFont.js only
+   after the real font has loaded, so the Outfit fallback keeps the tuned
+   sizing and tracking it has today, and the wordmark never renders in a
+   display face's metrics with a fallback's spacing (or vice versa).
+   The tracking below is a starting point: check it against the logo artwork
+   once the font is available. */
+.has-wordmark-font .wordmark {
+  font-family: var(--font-wordmark);
+  font-weight: 400;
+  font-synthesis: none;
+  letter-spacing: 0.02em;
 }
 p { text-wrap: pretty; }
 em { color: var(--gold); font-weight: 450; }

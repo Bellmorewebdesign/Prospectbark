@@ -30,7 +30,7 @@ export default function Footer({ onNav }) {
           </div>
         </div>
 
-        <div className="footer__word" aria-hidden="true"><span>PROSPECT</span><span>BARK!</span></div>
+        <div className="footer__word" aria-hidden="true"><span className="wordmark">PROSPECT</span><span>BARK!</span></div>
         <div className="footer__bar">
           <span>Established 2010</span>
           <span>Women-Owned · Asian-Owned · LGBTQ+ Friendly</span>
