@@ -25,11 +25,12 @@
 .mmenu__contact a { display: inline-flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.72); font-size: 0.78rem; }
 
 /* --- Opening sequence -----------------------------------------------------
-   The logo is the full-colour lockup on paper, assembled from three kinds of
-   layer (mark / stars / tagline) that are absolutely positioned by percentage
-   inside one aspect-ratio box. Each layer gets its own entrance so the stars
-   can twinkle independently of the mark. All delays are set inline from
-   SiteLoader.jsx, so the pacing lives in one place in the JS. */
+   The logo is the full-colour lockup, assembled from three kinds of layer
+   (mark / stars / tagline) that are absolutely positioned by percentage inside
+   one aspect-ratio box. Each layer gets its own entrance so the stars can
+   twinkle independently of the mark. Every delay and duration is set inline
+   from the timeline in SiteLoader.jsx, so the pacing lives in one place; the
+   durations here are only fallbacks. */
 .site-loader {
   position: fixed;
   inset: 0;
@@ -39,21 +40,30 @@
   overflow: hidden;
   background: radial-gradient(115% 85% at 50% 44%, var(--ink-2) 0%, var(--ink) 62%, #0a1a14 100%);
 }
-.site-loader__logo { position: relative; width: min(78vw, 520px); }
-.site-loader__logo > * { position: absolute; }
+/* Capped by height as well as width so a short landscape phone never crops
+   the top of the 16 or the tagline. 118svh = 80% of the height at this ratio. */
+.site-loader__logo { position: relative; width: min(78vw, 520px, 118vh); width: min(78vw, 520px, 118svh); transition: opacity var(--leave-time, 0.6s) ease, transform var(--leave-time, 0.6s) var(--ease); }
+.site-loader__logo > *, .site-loader__lockup > * { position: absolute; }
 /* Every layer sits on its first keyframe until the artwork has loaded. */
 .site-loader__logo > * { animation-play-state: paused; }
 .site-loader__logo.is-ready > * { animation-play-state: running; }
+/* The finished lockup eases up and away before the curtain swipes, so the
+   curtain's edge never slices through the artwork. */
+.site-loader__logo.is-leaving { opacity: 0; transform: translateY(-1.5%) scale(0.985); }
 
 .site-loader__glow {
   inset: -16% -10%;
   background: radial-gradient(52% 48% at 50% 42%, rgba(240, 201, 120, 0.22), rgba(240, 201, 120, 0) 70%);
   animation: loader-glow 2.6s ease-out 0.2s both;
 }
-.site-loader__mark {
-  height: auto;
+.site-loader__lockup {
+  inset: 0;
   animation: loader-mark-in 1.15s var(--ease) both;
 }
+.site-loader__mark { height: auto; }
+/* Light ground behind the PROSPECT plate: near-white at the top where the
+   plate is already opaque, into the brand's light blue where it fades out. */
+.site-loader__plate { background: linear-gradient(180deg, var(--paper) 0%, var(--paper) 30%, var(--cream) 100%); }
 .site-loader__shine {
   background: linear-gradient(100deg, transparent 43%, rgba(255, 250, 240, 0.34) 50%, transparent 57%);
   background-size: 260% 100%;
@@ -69,17 +79,27 @@
   height: auto;
   transform-origin: 50% 50%;
   animation:
-    loader-star-pop 0.85s cubic-bezier(0.22, 1.4, 0.36, 1) var(--pop-delay) both,
+    loader-star-pop var(--pop-time, 0.85s) cubic-bezier(0.22, 1.4, 0.36, 1) var(--pop-delay) both,
     loader-star-twinkle var(--twinkle-time) ease-in-out var(--twinkle-delay) infinite;
 }
+/* A feathered mask rather than a hard clip edge: the gradient is 2.5x the
+   tagline's width with a soft band in the middle, and sliding it across
+   reveals the words with a gentle leading edge. */
 .site-loader__tagline {
-  clip-path: inset(-140% 100% -140% 0);
-  animation: loader-wipe 1.35s cubic-bezier(0.33, 0.4, 0.2, 1) both;
+  -webkit-mask-image: linear-gradient(90deg, #000 45%, transparent 55%);
+  mask-image: linear-gradient(90deg, #000 45%, transparent 55%);
+  -webkit-mask-size: 250% 100%;
+  mask-size: 250% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+  animation: loader-wipe 2s cubic-bezier(0.37, 0, 0.63, 1) both;
 }
 .site-loader__tagline img { width: 100%; height: auto; }
 @keyframes loader-glow { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: none; } }
 @keyframes loader-mark-in {
-  from { opacity: 0; transform: scale(0.94) translateY(2.2%); filter: blur(10px); }
+  from { opacity: 0; transform: scale(0.94) translateY(2%); filter: blur(10px); }
   to { opacity: 1; transform: none; filter: blur(0); }
 }
 @keyframes loader-shine {
@@ -97,13 +117,17 @@
   0%, 100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 3px rgba(214, 155, 63, 0.35)); }
   50% { opacity: 0.68; transform: scale(1.14); filter: drop-shadow(0 0 13px rgba(240, 201, 120, 0.9)); }
 }
-@keyframes loader-wipe { from { clip-path: inset(-140% 100% -140% 0); } to { clip-path: inset(-140% 0 -140% 0); } }
+@keyframes loader-wipe {
+  from { opacity: 0.4; -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+  to { opacity: 1; -webkit-mask-position: 0 0; mask-position: 0 0; }
+}
 
 /* No motion: show the finished lockup, skip every entrance. */
-.site-loader__logo.is-static > * { animation: none; opacity: 1; clip-path: none; filter: none; transform: none; }
+.site-loader__logo.is-static > * { animation: none; opacity: 1; filter: none; transform: none; -webkit-mask-image: none; mask-image: none; }
 .site-loader__logo.is-static .site-loader__shine { display: none; }
 @media (prefers-reduced-motion: reduce) {
-  .site-loader__logo > * { animation: none; opacity: 1; clip-path: none; filter: none; transform: none; }
+  .site-loader__logo > * { animation: none; opacity: 1; filter: none; transform: none; -webkit-mask-image: none; mask-image: none; }
+  .site-loader__logo { transition: none; }
   .site-loader__shine { display: none; }
 }
 

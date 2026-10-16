@@ -9,7 +9,8 @@ exactly. This script turns them into the pieces the site loader animates:
     src/assets/brand/logo-tagline.webp  DOG WALKS - DAYCARE - BATHS - PET SITS
     src/assets/brand/star-NN.webp       every star cut out on its own
     src/assets/brand/manifest.json      each piece's position, as a percentage
-                                        of the lockup's bounding box
+                                        of the lockup's bounding box, plus the
+                                        PROSPECT plate's rectangle
 
 Only needed when the logo pack itself changes -- the generated files are
 committed, so a normal `npm run build` never runs this.
@@ -96,6 +97,22 @@ star_meta.sort(key=lambda m: -m['area'])
 manifest['stars'] = star_meta
 print('stars:', len(star_meta),
       'bytes:', sum(os.path.getsize(os.path.join(OUT, m['src'])) for m in star_meta))
+
+# ---------- 4. PROSPECT plate ----------
+# The plate behind PROSPECT is white fading to transparent, so on a dark
+# background the lower half takes on that colour and the black lettering sinks
+# into it. Record the plate's inner rectangle so the loader can sit a light
+# backing behind it (the artwork itself is untouched).
+#   columns: whitish, translucent pixels spanning most of the plate's rows
+#   rows:    measured on the plate's left edge strip, clear of the dog and cat
+plate = (f[:, :, :3].min(axis=2) > 200) & (f[:, :, 3] > 8) & (f[:, :, 3] < 250)
+p_rows = np.where(plate.sum(axis=1) > CW * 0.5)[0]
+p_cols = np.where(plate[p_rows].sum(axis=0) > len(p_rows) * 0.5)[0]
+px0, px1 = p_cols.min(), p_cols.max() + 1
+edge_rows = np.where(plate[:, px0:px0 + (px1 - px0) // 8].mean(axis=1) > 0.6)[0]
+py0, py1 = edge_rows.min(), edge_rows.max() + 1
+manifest['plate'] = pct(px0, py0, px1 - px0, py1 - py0)
+print('plate', manifest['plate'])
 
 with open(os.path.join(OUT, 'manifest.json'), 'w') as fh:
     json.dump(manifest, fh, indent=2)
