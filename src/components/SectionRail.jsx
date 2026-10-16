@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useReducedMotion } from 'framer-motion'
+import { scrollToSection } from '../router/useHashRoute.js'
 
 const SECTIONS = [
   { id: 'home', label: 'Home' },
@@ -12,7 +12,6 @@ const SECTIONS = [
 
 export default function SectionRail() {
   const [active, setActive] = useState(0)
-  const reduce = useReducedMotion()
 
   useEffect(() => {
     const nodes = SECTIONS.map(({ id }) => document.getElementById(id)).filter(Boolean)
@@ -31,9 +30,9 @@ export default function SectionRail() {
     return () => observer.disconnect()
   }, [])
 
-  const goTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' })
-  }
+  // Same helper as the navbar, so a section lands below the fixed bar rather
+  // than underneath it.
+  const goTo = (id) => scrollToSection(id)
 
   return (
     <aside className="section-rail" aria-label="Homepage sections">

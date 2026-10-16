@@ -1,3 +1,5 @@
+import { useLayoutEffect } from 'react'
+import { scrollToSection } from '../router/useHashRoute.js'
 import Hero from '../components/Hero.jsx'
 import TrustStrip from '../components/TrustStrip.jsx'
 import CareFinder from '../components/CareFinder.jsx'
@@ -11,7 +13,14 @@ import InstagramCarousel from '../components/InstagramCarousel.jsx'
 import FinalInvite from '../components/FinalInvite.jsx'
 import SectionRail from '../components/SectionRail.jsx'
 
-export default function Home({ onNav, onGetStarted }) {
+export default function Home({ onNav, onGetStarted, takePendingTarget }) {
+  // Arriving from another page with a section to show (e.g. Reviews): jump
+  // there before the first paint, so the page fades in already in place.
+  useLayoutEffect(() => {
+    const target = takePendingTarget?.()
+    if (target) scrollToSection(target, { instant: true })
+  }, [takePendingTarget])
+
   return (
     <main id="main">
       <SectionRail />
