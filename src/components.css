@@ -3,8 +3,18 @@
 .nav.is-solid, .nav.is-page { background: rgba(245, 239, 223, 0.94); color: var(--ink); border-bottom-color: var(--line); backdrop-filter: blur(14px); }
 .nav__inner { display: flex; align-items: center; gap: 1.5rem; height: 94px; }
 .nav__brand { display: inline-flex; align-items: center; flex: none; }
-.nav__logo { width: auto; height: 64px; filter: brightness(0) invert(1); transition: filter 0.3s, height 0.3s; }
-.nav.is-solid .nav__logo, .nav.is-page .nav__logo { filter: none; height: 56px; }
+/* The logo keeps its original colours everywhere. Its small BARK lettering is
+   dark, so over the dark hero photo a soft paper-coloured halo traces the
+   artwork's edge to keep it legible; on the solid paper bar the halo is
+   simply invisible against the background, so it never needs switching off.
+   drop-shadow() only adds light around the shape and never recolours it. */
+.nav__logo {
+  width: auto;
+  height: 72px;
+  filter: drop-shadow(0 0 1px rgba(255, 250, 240, 0.9)) drop-shadow(0 0 5px rgba(255, 250, 240, 0.45));
+  transition: height 0.3s var(--ease);
+}
+.nav.is-solid .nav__logo, .nav.is-page .nav__logo { height: 62px; }
 .nav__links { display: flex; align-items: center; justify-content: center; gap: clamp(0.15rem, 1vw, 0.75rem); margin-left: auto; }
 .nav__link { position: relative; padding: 0.5rem; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.075em; text-transform: uppercase; }
 .nav__link::after { content: ''; position: absolute; left: 0.5rem; right: 0.5rem; bottom: 0.2rem; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s var(--ease); }
@@ -568,7 +578,7 @@
 @media (max-width: 680px) {
   :root { --gutter: 20px; --section: 86px; }
   .nav__inner { height: 82px; }
-  .nav__logo { height: 50px; }
+  .nav__logo, .nav.is-solid .nav__logo, .nav.is-page .nav__logo { height: 56px; }
   .nav__cta { display: none; }
   .home-hero__inner { justify-content: flex-end; padding-top: 106px; padding-bottom: 88px; }
   .home-hero__backdrop { inset: 0; }
