@@ -17,9 +17,19 @@ export const SITE = {
   mapsHref:
     'https://www.google.com/maps/search/?api=1&query=ProspectBArk%21%20578%205th%20Ave%20Brooklyn%20NY%2011215',
   // Combined across all review platforms. Display the total only.
+  // The single source for every rating on the site: the hero, trust strip,
+  // reviews section, and (via scripts/site-meta.js) the share description and
+  // structured data in index.html.
+  //
+  // NOT YET VERIFIED. 4.9 / 312 replaced the originally supplied 4.8 / 129 in
+  // September as a combined cross-platform figure; which platforms and on what
+  // date has not been documented. Confirm with the client, then set verified to
+  // true. Until then the schema.org AggregateRating is left out of the
+  // structured data (the visible figures are unchanged).
   rating: {
     stars: 4.9,
     reviews: 312,
+    verified: false,
     href: 'https://www.google.com/search?q=ProspectBArk%21+578+5th+Ave+Brooklyn+NY+reviews',
   },
   social: {
