@@ -16,3 +16,7 @@ npm-debug.log*
 # env
 .env
 .env.*
+# brand fonts: not committed until the web-embedding licence is confirmed
+# (see design/BRAND-FONT.md)
+*.otf
+public/fonts/

@@ -1,23 +1,42 @@
 :root {
-  --ink: #10271f;
-  --ink-2: #183a30;
-  --cream: #f5efdf;
-  --cream-2: #ebe1cf;
-  --paper: #fffaf0;
-  --gold: #d69b3f;
-  --gold-light: #f0c978;
-  --teal: #1f6b62;
-  --teal-bright: #8dc8bd;
+  /* Palette, October 2026. Lights come from the client's chosen colours:
+     #deefff is the main colour, the aqua family (#c8f0f1 / #b2e4e5 / #bce2e3 /
+     #86cacc) supports it, and #d69628 is the gold. The darks are a deep
+     green-teal, shifted from the old forest green toward the aqua so the
+     logo's greens and the new blues sit together, and dark enough to carry
+     all the light text. Every alpha tint in components.css reads the *-rgb
+     channels below, so a change here reaches the whole site. */
+  --ink: #0f2b29;
+  --ink-rgb: 15 43 41;
+  --ink-2: #173d3a;
+  --deep: #071a19; /* footer, photo shades, loader edge */
+  --deep-rgb: 7 26 25;
+  --cream: #deefff; /* client main colour: the page ground */
+  --cream-rgb: 222 239 255;
+  --cream-2: #c8f0f1; /* client aqua: alternate sections */
+  --paper: #f4f9ff; /* cards and polaroid frames, a whisper of the main colour */
+  --paper-rgb: 244 249 255;
+  --gold: #d69628; /* client gold */
+  --gold-rgb: 214 150 40;
+  --gold-light: #efc56f; /* gold for text and stars on the darks (9.2:1 on ink) */
+  --gold-light-rgb: 239 197 111;
+  --teal: #1d6466; /* the aqua family's hue, deep enough for white text (6.8:1) */
+  --teal-rgb: 29 100 102;
+  --teal-bright: #86cacc; /* client aqua */
   --clay: #ae442c;
-  --line: rgba(16, 39, 31, 0.18);
-  --muted: #52645d;
-  --white: #fffdf8;
+  --clay-rgb: 174 68 44;
+  --line: rgb(var(--ink-rgb) / 0.18);
+  --muted: #46605e; /* 5.8:1 on the main colour */
+  --white: #fcfeff;
   --font-display: 'Fraunces', Georgia, serif;
   --font-sans: 'Manrope', 'Inter', system-ui, sans-serif;
   /* The logo wordmark is a light geometric sans in the Futura / Century Gothic
      lineage. Outfit Light is the closest web match (measured letter-by-letter
      against the logo artwork), so the business name is set in it everywhere. */
   --font-brand: 'Outfit', 'Manrope', system-ui, sans-serif;
+  /* PROSPECT in the logo is set in Topaz Shaded (see design/BRAND-FONT.md).
+     Only used once the real font is confirmed present: see .has-wordmark-font. */
+  --font-wordmark: 'Topaz Shaded', var(--font-brand);
   --shell: 1440px;
   --gutter: clamp(20px, 4vw, 70px);
   --section: clamp(82px, 10vw, 164px);
@@ -25,9 +44,27 @@
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* Topaz Shaded, the client's wordmark face. Only local() sources for now: the
+   web-embedding licence is not confirmed, so the font file is not in this
+   public repository. Anyone with the client's Topaz Shaded.otf installed sees
+   the real wordmark; everyone else gets the current Outfit lettering, and no
+   request is ever made for a file that is not there.
+   Once the licence allows web embedding, add the converted file as
+   public/fonts/topaz-shaded.woff2 and append to src:
+     url('/fonts/topaz-shaded.woff2') format('woff2') */
+@font-face {
+  font-family: 'Topaz Shaded';
+  src: local('Topaz Shaded'), local('TopazShaded'), local('TopazShaded-Regular'), local('Topaz Shaded Regular');
+  font-display: swap;
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+/* The canvas behind the page is ink, not cream. It is what shows when a phone
+   overscrolls past the top or bottom (both ends of every page are dark: the
+   heroes and the footer) and what Safari falls back to when tinting its bars,
+   so neither shows a pale band above the hero. body keeps the cream. */
+html { background: var(--ink); scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   min-width: 320px;
   min-height: 100vh;
@@ -67,6 +104,18 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 610; line-height
   font-family: var(--font-brand) !important;
   font-style: normal !important;
   letter-spacing: 0.012em;
+}
+/* PROSPECT set in the logo's own face. The class is added by brandFont.js only
+   after the real font has loaded, so the Outfit fallback keeps the tuned
+   sizing and tracking it has today, and the wordmark never renders in a
+   display face's metrics with a fallback's spacing (or vice versa).
+   The tracking below is a starting point: check it against the logo artwork
+   once the font is available. */
+.has-wordmark-font .wordmark {
+  font-family: var(--font-wordmark);
+  font-weight: 400;
+  font-synthesis: none;
+  letter-spacing: 0.02em;
 }
 p { text-wrap: pretty; }
 em { color: var(--gold); font-weight: 450; }
@@ -111,7 +160,7 @@ em { color: var(--gold); font-weight: 450; }
   text-transform: uppercase;
   transition: transform 0.3s var(--ease), background 0.3s, color 0.3s, box-shadow 0.3s;
 }
-.button:hover { transform: translateY(-3px); box-shadow: 8px 8px 0 rgba(16, 39, 31, 0.18); }
+.button:hover { transform: translateY(-3px); box-shadow: 8px 8px 0 rgb(var(--ink-rgb) / 0.18); }
 .button svg { transition: transform 0.3s var(--ease); }
 .button:hover svg { transform: translateX(4px); }
 .button--gold { background: var(--gold); color: var(--ink); }

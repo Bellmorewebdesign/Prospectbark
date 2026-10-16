@@ -16,7 +16,16 @@ import Contact from './pages/Contact.jsx'
 export default function App() {
   const { path, navigate } = useHashRoute()
   const reduce = useReducedMotion()
+  // A section to scroll to once the homepage has mounted (Reviews clicked from
+  // another page). Home takes it in a layout effect: with AnimatePresence in
+  // "wait" mode the homepage only mounts after the old page has faded out, so
+  // nothing outside Home can know when its sections exist.
   const pending = useRef(null)
+  const takePendingTarget = useCallback(() => {
+    const target = pending.current
+    pending.current = null
+    return target
+  }, [])
 
   const handleNav = useCallback(
     (link) => {
@@ -37,12 +46,6 @@ export default function App() {
   )
 
   useEffect(() => {
-    if (pending.current && path === '/') {
-      const target = pending.current
-      pending.current = null
-      const id = window.setTimeout(() => scrollToSection(target), 90)
-      return () => window.clearTimeout(id)
-    }
     window.scrollTo({ top: 0, behavior: 'auto' })
   }, [path])
 
@@ -57,7 +60,7 @@ export default function App() {
   ) : path === '/contact' ? (
     <Contact />
   ) : (
-    <Home onNav={handleNav} onGetStarted={() => navigate('/contact')} />
+    <Home onNav={handleNav} onGetStarted={() => navigate('/contact')} takePendingTarget={takePendingTarget} />
   )
 
   return (

@@ -8,6 +8,8 @@
 //   logo-mark.webp     the 16 + pets + PROSPECT BARK lockup (stars removed)
 //   star-NN.webp       each star on its own, so they can twinkle individually
 //   logo-tagline.webp  DOG WALKS - DAYCARE - BATHS - PET SITS
+//   plate              not an image: the rectangle of the PROSPECT plate, so
+//                      the loader can put a light backing behind it
 //
 // Because every piece is placed with percentages inside one aspect-ratio box,
 // the whole lockup scales to any screen and stays pixel-accurate to the source.
@@ -34,6 +36,7 @@ export const LOGO_RATIO = `${manifest.box.w} / ${manifest.box.h}`
 
 export const LOGO_MARK = { url: markUrl, ...manifest.mark }
 export const LOGO_TAGLINE = { url: taglineUrl, ...manifest.tagline }
+export const LOGO_PLATE = manifest.plate
 
 export const LOGO_STARS = manifest.stars.map((star, index) => ({
   ...star,
