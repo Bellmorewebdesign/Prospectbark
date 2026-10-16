@@ -44,7 +44,7 @@ function structuredData(siteUrl) {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: SITE.name,
-    image: `${siteUrl}share-17-years-teal.jpg`,
+    image: `${siteUrl}share-17-years-black.jpg`,
     url: SITE.websiteHref,
     telephone: `+${digits[0]}-${digits.slice(1, 4)}-${digits.slice(4, 7)}-${digits.slice(7)}`,
     email: SITE.email,
