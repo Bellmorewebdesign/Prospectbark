@@ -27,7 +27,11 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+/* The canvas behind the page is ink, not cream. It is what shows when a phone
+   overscrolls past the top or bottom (both ends of every page are dark: the
+   heroes and the footer) and what Safari falls back to when tinting its bars,
+   so neither shows a pale band above the hero. body keeps the cream. */
+html { background: var(--ink); scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   min-width: 320px;
   min-height: 100vh;
