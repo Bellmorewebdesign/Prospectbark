@@ -1,17 +1,33 @@
 :root {
-  --ink: #10271f;
-  --ink-2: #183a30;
-  --cream: #f5efdf;
-  --cream-2: #ebe1cf;
-  --paper: #fffaf0;
-  --gold: #d69b3f;
-  --gold-light: #f0c978;
-  --teal: #1f6b62;
-  --teal-bright: #8dc8bd;
+  /* Palette, October 2026. Lights come from the client's chosen colours:
+     #deefff is the main colour, the aqua family (#c8f0f1 / #b2e4e5 / #bce2e3 /
+     #86cacc) supports it, and #d69628 is the gold. The darks are a deep
+     green-teal, shifted from the old forest green toward the aqua so the
+     logo's greens and the new blues sit together, and dark enough to carry
+     all the light text. Every alpha tint in components.css reads the *-rgb
+     channels below, so a change here reaches the whole site. */
+  --ink: #0f2b29;
+  --ink-rgb: 15 43 41;
+  --ink-2: #173d3a;
+  --deep: #071a19; /* footer, photo shades, loader edge */
+  --deep-rgb: 7 26 25;
+  --cream: #deefff; /* client main colour: the page ground */
+  --cream-rgb: 222 239 255;
+  --cream-2: #c8f0f1; /* client aqua: alternate sections */
+  --paper: #f4f9ff; /* cards and polaroid frames, a whisper of the main colour */
+  --paper-rgb: 244 249 255;
+  --gold: #d69628; /* client gold */
+  --gold-rgb: 214 150 40;
+  --gold-light: #efc56f; /* gold for text and stars on the darks (9.2:1 on ink) */
+  --gold-light-rgb: 239 197 111;
+  --teal: #1d6466; /* the aqua family's hue, deep enough for white text (6.8:1) */
+  --teal-rgb: 29 100 102;
+  --teal-bright: #86cacc; /* client aqua */
   --clay: #ae442c;
-  --line: rgba(16, 39, 31, 0.18);
-  --muted: #52645d;
-  --white: #fffdf8;
+  --clay-rgb: 174 68 44;
+  --line: rgb(var(--ink-rgb) / 0.18);
+  --muted: #46605e; /* 5.8:1 on the main colour */
+  --white: #fcfeff;
   --font-display: 'Fraunces', Georgia, serif;
   --font-sans: 'Manrope', 'Inter', system-ui, sans-serif;
   /* The logo wordmark is a light geometric sans in the Futura / Century Gothic
@@ -115,7 +131,7 @@ em { color: var(--gold); font-weight: 450; }
   text-transform: uppercase;
   transition: transform 0.3s var(--ease), background 0.3s, color 0.3s, box-shadow 0.3s;
 }
-.button:hover { transform: translateY(-3px); box-shadow: 8px 8px 0 rgba(16, 39, 31, 0.18); }
+.button:hover { transform: translateY(-3px); box-shadow: 8px 8px 0 rgb(var(--ink-rgb) / 0.18); }
 .button svg { transition: transform 0.3s var(--ease); }
 .button:hover svg { transform: translateX(4px); }
 .button--gold { background: var(--gold); color: var(--ink); }
