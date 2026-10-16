@@ -16,7 +16,7 @@ const T = {
   starTime: 0.85,
   tagline: 1.0, // tagline starts revealing about a second in...
   taglineTime: 2.0, // ...with a slow, feathered left-to-right wipe
-  linger: 1.3, // the finished lockup holds still for a beat
+  linger: 1.1, // the finished lockup holds still for a beat
   fade: 0.6, // then the lockup eases away...
   curtain: 0.25, // ...and once it has mostly gone (this far into the fade)...
   swipe: 0.9, // ...the whole screen swipes up
@@ -30,7 +30,8 @@ const SETTLED = Math.max(
   T.tagline + T.taglineTime,
 )
 const LEAVE_AT = SETTLED + T.linger
-// Total on screen once loaded: LEAVE_AT + curtain + swipe, about 5.45s.
+// Total on screen once loaded: LEAVE_AT + curtain + swipe, about 5.25s; with
+// the logo download in front of it, a first visit lands at roughly 5.5-6s.
 
 const SAFETY_MS = 2500
 const STATIC_HOLD_MS = 800
