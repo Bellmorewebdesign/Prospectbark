@@ -26,11 +26,11 @@ export const SERVICES = [
     number: '02',
     short: 'Walking',
     name: 'Dog Walking',
-    headline: 'Brooklyn blocks. Better days.',
+    headline: 'NYC blocks. Better days.',
     intro: 'A dependable break in the day from trained caregivers who know the neighborhood.',
     image: walkingImg,
     secondaryImage: huskyImg,
-    alt: 'A happy dog on a walk in Brooklyn',
+    alt: 'A happy dog on a walk in NYC',
     tone: 'clay',
   },
   {

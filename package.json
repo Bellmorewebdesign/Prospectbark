@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Editorial website redesign concept for ProspectBArk!, a Brooklyn pet care company.",
+  "description": "Editorial website redesign concept for ProspectBArk!, an NYC pet care company.",
   "scripts": {
     "dev": "vite --configLoader runner",
     "build": "vite build --configLoader runner",

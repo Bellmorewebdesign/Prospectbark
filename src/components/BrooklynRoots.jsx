@@ -9,7 +9,7 @@ export default function BrooklynRoots() {
       <MotionOrnament tone="ink" />
       <div className="shell roots__grid">
         <div className="roots__copy">
-          <p className="kicker">Brooklyn roots</p>
+          <p className="kicker">Our roots</p>
           <h2 id="roots-title">Born by<br />Prospect Park.<br /><em>Since 2010.</em></h2>
           <div className="roots__address">
             <MapPin size={20} />
@@ -41,7 +41,7 @@ export default function BrooklynRoots() {
             <text className="brooklyn-map__park-label" x="105" y="228">PROSPECT PARK</text>
           </svg>
           <figure className="roots__storefront">
-            <img src={storefront} alt="The ProspectBArk storefront window on Fifth Avenue in Brooklyn" loading="lazy" />
+            <img src={storefront} alt="The ProspectBArk storefront window on Fifth Avenue" loading="lazy" />
             <figcaption>Look for the dogs in the window.</figcaption>
           </figure>
         </div>

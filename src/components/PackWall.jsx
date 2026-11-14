@@ -14,7 +14,7 @@ const PHOTOS = [
   { src: husky, alt: 'A husky out on a walk', label: 'WALKING CLUB' },
   { src: play, alt: 'Dogs playing inside ProspectBArk daycare', label: 'FRIEND ZONE' },
   { src: cat, alt: 'A cat relaxing at home', label: 'HOME TEAM' },
-  { src: dog, alt: 'A happy dog outside', label: 'BROOKLYN KID' },
+  { src: dog, alt: 'A happy dog outside', label: 'NYC KID' },
   { src: team, alt: 'ProspectBArk team members inside the daycare', label: 'GOOD PEOPLE' },
 ]
 

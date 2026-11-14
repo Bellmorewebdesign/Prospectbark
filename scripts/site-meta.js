@@ -39,7 +39,7 @@ function ratingSentence() {
 }
 
 function structuredData(siteUrl) {
-  const digits = SITE.phoneHref.replace(/\D/g, '') // 16463771575
+  const digits = SITE.phoneHref.replace(/\D/g, '') // 12128842275
   const data = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',

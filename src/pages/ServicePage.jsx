@@ -13,11 +13,11 @@ const PAGE_COPY = {
   daycare: {
     eyebrow: 'ProspectBArk daycare',
     title: ['DAYCARE', "THEY'LL", 'ACTUALLY', 'LOVE.'],
-    deck: 'A Brooklyn clubhouse for dogs who are ready to have a day of their own.',
+    deck: 'An NYC clubhouse for dogs who are ready to have a day of their own.',
     facts: ['Photos from ProspectBArk daycare', 'A dedicated pet care team', 'Photo and video updates mentioned in public reviews'],
   },
   walking: {
-    eyebrow: 'Dog walking in Brooklyn',
+    eyebrow: 'Dog walking in NYC',
     title: ['A BETTER', 'PART OF', 'THEIR DAY.'],
     deck: 'A familiar face, a good route and a proper break in the middle of the day.',
     facts: ['Paid caregiver training', 'Paid industry certifications', 'Field support for current caregiver roles'],
@@ -68,7 +68,7 @@ export default function ServicePage({ service, onGetStarted, onFindCare }) {
             <h2>What you should<br /><em>know up front.</em></h2>
           </div>
           <div className="service-values__list">
-            <article><span>01</span><h3>Real people</h3><p><span className="brand">ProspectBArk</span> has served Brooklyn pets since 2010. Current caregiver roles include paid training, industry certifications and field support.</p></article>
+            <article><span>01</span><h3>Real people</h3><p><span className="brand">ProspectBArk</span> has served NYC pets since 2010. Current caregiver roles include paid training, industry certifications and field support.</p></article>
             <article><span>02</span><h3>Real accountability</h3><p>The company publicly identifies itself as bonded and insured, with pet first aid certification listed on its official profile.</p></article>
             <article><span>03</span><h3>Real communication</h3><p>Public daycare reviews often mention photos, videos and staff who pay attention. Those details matter when your pet is with someone else.</p></article>
           </div>
@@ -120,14 +120,14 @@ function WalkingExperience() {
   return (
     <section className="walking-route section" aria-labelledby="walking-route-title">
       <div className="shell walking-route__grid">
-        <div><p className="kicker">The route</p><h2 id="walking-route-title">Out the door.<br />Into Brooklyn.</h2><p>This decorative route follows the blocks around Prospect Park.</p></div>
+        <div><p className="kicker">The route</p><h2 id="walking-route-title">Out the door.<br />Into NYC.</h2><p>This decorative route follows the blocks around Prospect Park.</p></div>
         <div className="walking-map">
-          <svg viewBox="0 0 720 620" role="img" aria-label="Abstract Brooklyn walking route">
+          <svg viewBox="0 0 720 620" role="img" aria-label="Abstract NYC walking route">
             <g><path d="M65 60V570" /><path d="M160 36V585" /><path d="M255 54V568" /><path d="M350 30V590" /><path d="M445 48V574" /><path d="M540 32V592" /><path d="M635 58V568" /><path d="M24 118H690" /><path d="M20 224H698" /><path d="M28 330H690" /><path d="M18 436H700" /><path d="M30 542H688" /></g>
             <path className="walking-map__route" d="M71 542 C124 512 134 451 164 435 C220 406 304 463 354 431 C413 394 412 332 451 306 C504 270 579 309 630 224 C659 176 625 137 591 118" />
             <circle cx="71" cy="542" r="9" /><circle cx="591" cy="118" r="12" /><text x="89" y="550">START</text><text x="527" y="94">GOOD WALK</text>
           </svg>
-          <div className="walking-map__note"><MapPin size={18} /><span>Brooklyn blocks<br /><strong>Happy dog</strong></span></div>
+          <div className="walking-map__note"><MapPin size={18} /><span>NYC blocks<br /><strong>Happy dog</strong></span></div>
         </div>
       </div>
     </section>
