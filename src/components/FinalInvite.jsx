@@ -4,7 +4,7 @@ import dog from '../assets/husky.webp'
 export default function FinalInvite({ onGetStarted }) {
   return (
     <section className="final-invite" aria-labelledby="final-invite-title" data-cursor-dark>
-      <img src={dog} alt="A happy husky ready for a Brooklyn walk" loading="lazy" />
+      <img src={dog} alt="A happy husky ready for an NYC walk" loading="lazy" />
       <div className="final-invite__shade" />
       <div className="shell final-invite__copy">
         <p className="kicker kicker--light">Start here</p>

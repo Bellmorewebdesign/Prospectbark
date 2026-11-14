@@ -90,7 +90,7 @@ export default function SiteLoader() {
           >
             <span className="site-loader__glow" />
 
-            {/* The lockup itself: 16 + pets + PROSPECT BArk, settling in as one
+            {/* The lockup itself: 17 Years + pets + PROSPECT BArk, settling in as one
                 piece with the light backing that sits behind its plate */}
             <div
               className="site-loader__lockup"

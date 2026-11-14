@@ -1,8 +1,8 @@
 export const SITE = {
   name: 'ProspectBArk!',
   established: 2010,
-  phone: '(646) 377-1575',
-  phoneHref: 'tel:+16463771575',
+  phone: '(212) 884-2275',
+  phoneHref: 'tel:+12128842275',
   email: 'frontdesk@prospectbark.com',
   emailHref: 'mailto:frontdesk@prospectbark.com',
   website: 'prospectbark.com',
@@ -21,11 +21,11 @@ export const SITE = {
   // reviews section, and (via scripts/site-meta.js) the share description and
   // structured data in index.html.
   //
-  // NOT YET VERIFIED. 4.9 / 312 replaced the originally supplied 4.8 / 129 in
-  // September as a combined cross-platform figure; which platforms and on what
-  // date has not been documented. Confirm with the client, then set verified to
-  // true. Until then the schema.org AggregateRating is left out of the
-  // structured data (the visible figures are unchanged).
+  // Source: the client's instruction at the September meeting: combine the
+  // reviews from all platforms (183 + 129 = 312) and show the rating as 4.9.
+  // `verified` stays false, so the schema.org AggregateRating is left out of the
+  // structured data: Google does not accept ratings collected on other sites as
+  // a business's own rating. The visible figures are unaffected.
   rating: {
     stars: 4.9,
     reviews: 312,

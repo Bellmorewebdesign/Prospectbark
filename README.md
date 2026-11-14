@@ -1,6 +1,6 @@
 # ProspectBArk! Website Redesign
 
-An interactive redesign concept for ProspectBArk!, a Brooklyn pet care company offering dog daycare, dog walking and pet sitting.
+An interactive redesign concept for ProspectBArk!, an NYC pet care company offering dog daycare, dog walking and pet sitting.
 
 The site is built with React, Vite and Framer Motion. It is fully static, uses no API keys and can run on GitHub Pages.
 
@@ -61,7 +61,7 @@ docs/               Production build for GitHub Pages
 
 The site does not invent review quotes, pricing or opening hours. Current hours and public reviews are linked to their live listings.
 
-**Review figures need verification.** Every rating on the site (hero, trust strip, reviews section, share description) reads `SITE.rating` in `src/data/site.js`, currently 4.9 stars across 312 reviews, described as a combined total across review platforms. That replaced the originally supplied 4.8 / 129 in September, and its sources and date are not documented. Until the client confirms it and `verified` is set to `true`, the schema.org `AggregateRating` is left out of the structured data.
+Every rating on the site (hero, trust strip, reviews section, share description) reads `SITE.rating` in `src/data/site.js`, currently 4.9 stars across 312 reviews, described as a combined total across review platforms. That replaced the originally supplied 4.8 / 129 in September, at the client's request (183 + 129 reviews across platforms, shown as 4.9). `verified` stays `false`, so the schema.org `AggregateRating` is left out of the structured data.
 
 ## Share previews
 

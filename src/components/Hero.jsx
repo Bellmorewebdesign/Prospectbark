@@ -61,7 +61,7 @@ export default function Hero({ onFindCare, onMeet }) {
           animate={{ opacity: 1, rotate: -2, x: 0 }}
           transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
         >
-          <img src={dogImg} alt="A happy ProspectBArk dog outside in Brooklyn" width="1142" height="1193" />
+          <img src={dogImg} alt="A happy ProspectBArk dog outside in NYC" width="1142" height="1193" />
           <span>Good day, confirmed.</span>
         </motion.div>
 

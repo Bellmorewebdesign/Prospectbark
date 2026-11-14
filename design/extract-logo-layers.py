@@ -1,18 +1,29 @@
-"""Split the supplied opening-screen logo pack into animatable layers.
+"""Split the opening-screen logo into animatable layers.
 
-The three PNGs at the repo root (logo_opening_screen.png / "stars_opening
-screen.png" / tagline.png) share one 6912x3456 canvas, so the layers line up
-exactly. This script turns them into the pieces the site loader animates:
+Source: design/source-photos/17yrs_back_transparent.png, the 17 Years lockup
+the client sent on 2026-10-16 as one flattened image (logo, stars and tagline
+together on a 6912x3456 canvas). The stars and the tagline are separated out
+here by shape, colour and position:
+
+    stars    the small gold pieces around the lockup (every connected piece
+             above the tagline that is gold and star-sized)
+    tagline  everything below the BARK line: DOG WALKS + DAYCARE + BATHS +
+             PET SITS, with the client's little stars between the words
+
+(The 16 Years version used three separately supplied PNGs at the repo root:
+logo_opening_screen.png / "stars_opening screen.png" / tagline.png.)
+
+Outputs, which the site loader animates:
 
     public/brand/logo-mark.webp         the lockup with the stars removed
                                         (in public/ so index.html can preload it)
-    src/assets/brand/logo-tagline.webp  DOG WALKS - DAYCARE - BATHS - PET SITS
+    src/assets/brand/logo-tagline.webp  the tagline
     src/assets/brand/star-NN.webp       every star cut out on its own
     src/assets/brand/manifest.json      each piece's position, as a percentage
                                         of the lockup's bounding box, plus the
                                         PROSPECT plate's rectangle
 
-Only needed when the logo pack itself changes -- the generated files are
+Only needed when the logo itself changes -- the generated files are
 committed, so a normal `npm run build` never runs this.
 
     pip install pillow numpy scipy
@@ -29,9 +40,55 @@ MARK_OUT = os.path.join(ROOT, 'public/brand')
 os.makedirs(OUT, exist_ok=True)
 os.makedirs(MARK_OUT, exist_ok=True)
 
-full  = Image.open(os.path.join(ROOT, 'logo_opening_screen.png')).convert('RGBA')
-stars = Image.open(os.path.join(ROOT, 'stars_opening screen.png')).convert('RGBA')
-tag   = Image.open(os.path.join(ROOT, 'tagline.png')).convert('RGBA')
+SOURCE = os.path.join(ROOT, 'design/source-photos/17yrs_back_transparent.png')
+full = Image.open(SOURCE).convert('RGBA')
+
+
+def split_layers(img):
+    """Return (stars, tagline) as full-canvas RGBA images cut from img."""
+    a = np.array(img)
+    alpha = a[:, :, 3]
+    lbl, _ = ndimage.label(alpha > 12, structure=np.ones((3, 3)))
+
+    # The tagline is the last row of artwork: find the empty band of rows
+    # between BARK and the tagline and cut there.
+    rows = np.where(alpha.max(axis=1) > 12)[0]
+    gaps = np.where(np.diff(rows) > 40)[0]
+    tag_top = rows[gaps[-1] + 1]
+    cut = (rows[gaps[-1]] + tag_top) // 2
+    tag = np.zeros_like(a)
+    tag[cut:] = a[cut:]
+
+    # Stars: gold, roughly square, star-sized pieces above the tagline. The
+    # "17", the pets and the plate are one huge piece; "Years" is teal and
+    # BARK is green, so the colour test leaves them in the mark.
+    stars = np.zeros_like(a)
+    for i, sl in enumerate(ndimage.find_objects(lbl), start=1):
+        ys, xs = sl
+        if ys.start >= cut:
+            continue
+        w, h = xs.stop - xs.start, ys.stop - ys.start
+        piece = lbl[sl] == i
+        r, g, b = a[sl][piece][:, :3].mean(axis=0)
+        gold = r > g > b and r - b > 35
+        if not (gold and 12 <= w <= 200 and 12 <= h <= 200 and 0.7 < w / h < 1.4):
+            continue
+        # take the star plus its faint glow (alpha <= 12) around it, but
+        # never pixels that belong to another piece
+        y0, y1 = max(ys.start - 14, 0), ys.stop + 14
+        x0, x1 = max(xs.start - 14, 0), xs.stop + 14
+        grown = ndimage.binary_dilation(lbl[y0:y1, x0:x1] == i, iterations=12)
+        mine = grown & ((lbl[y0:y1, x0:x1] == 0) | (lbl[y0:y1, x0:x1] == i))
+        stars[y0:y1, x0:x1][mine] = a[y0:y1, x0:x1][mine]
+    return Image.fromarray(stars, 'RGBA'), Image.fromarray(tag, 'RGBA')
+
+
+stars, tag = split_layers(full)
+
+# clear the previous logo's stars so a star count change leaves no orphans
+for old in os.listdir(OUT):
+    if old.startswith('star-') and old.endswith('.webp'):
+        os.remove(os.path.join(OUT, old))
 
 BOX = full.getchannel('A').getbbox()
 CW, CH = BOX[2]-BOX[0], BOX[3]-BOX[1]
@@ -49,6 +106,10 @@ def pct(x, y, w, h):
 # ---------- 1. mark (full minus stars minus tagline) ----------
 mark = f.copy()
 mark[:, :, 3] = np.clip(f[:,:,3] - s[:,:,3] - t[:,:,3], 0, 255)
+# drop near-invisible leftovers (alpha <= 12) that are not part of the
+# lockup's own soft edge, so they cannot stretch the mark's bounding box
+edge = ndimage.binary_dilation(mark[:, :, 3] > 12, iterations=6)
+mark[:, :, 3][~edge] = 0
 mark_img = Image.fromarray(mark.astype(np.uint8), 'RGBA')
 mb = mark_img.getchannel('A').getbbox()
 mc = mark_img.crop(mb)

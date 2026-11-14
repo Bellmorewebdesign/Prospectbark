@@ -32,5 +32,5 @@ export const IG_POSTS = [
   { id: 'ig-4', image: group, alt: 'ProspectBArk daycare dogs looking up together', href: IG_ACCOUNT.href },
   { id: 'ig-5', image: cat, alt: 'A cat relaxing at home', href: IG_ACCOUNT.href },
   { id: 'ig-6', image: team, alt: 'ProspectBArk team members inside the daycare', href: IG_ACCOUNT.href },
-  { id: 'ig-7', image: dog, alt: 'A happy dog outside in Brooklyn', href: IG_ACCOUNT.href },
+  { id: 'ig-7', image: dog, alt: 'A happy dog outside in NYC', href: IG_ACCOUNT.href },
 ]

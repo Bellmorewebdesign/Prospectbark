@@ -7,7 +7,7 @@ const SECTIONS = [
   { id: 'day-story', label: 'A day here' },
   { id: 'services', label: 'Services' },
   { id: 'reviews', label: 'Reviews' },
-  { id: 'brooklyn-roots', label: 'Brooklyn roots' },
+  { id: 'brooklyn-roots', label: 'Our roots' },
 ]
 
 export default function SectionRail() {
