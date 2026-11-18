@@ -82,13 +82,13 @@ export const SHARE_PREVIEWS = [
     id: '17-years-blue-tight',
     image: 'share-17-years-blue-tight.jpg',
     alt: 'ProspectBArk! 17 Years logo with a beagle and an orange cat',
-    label: 'The 17 Years image on a blue gradient, tight crop',
+    label: 'The 17 Years image on a blue gradient, tight crop, the site uses today',
   },
   {
     id: '17-years-black-tight',
     image: 'share-17-years-black-tight.jpg',
     alt: 'ProspectBArk! 17 Years logo with a beagle and an orange cat',
-    label: 'The 17 Years image on black, tight crop, the site uses today',
+    label: 'The 17 Years image on black, tight crop',
   },
   // { id: 'a', image: 'share/option-a.png', alt: '…', label: 'Client option A' },
 ]
